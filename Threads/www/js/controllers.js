@@ -56,10 +56,11 @@ angular.module('starter.controllers', [])
     
     $scope.login = function(em,pwd){
         UserFactory.login(em, pwd).then(function success(response) {
+            UserFactory.getUser().then(function success(response) {
                 $scope.user = response.data.user;
-                $scope.hideAllSignins = true;
-                console.log($scope.hideAllSignins);
-                console.log(response);
+                console.log(response.data);
+            });
+            $scope.hideAllSignins = true;
         }, function handleError(response) {
             alert('Error: ' + response.data);
         });       
