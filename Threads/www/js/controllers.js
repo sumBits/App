@@ -19,9 +19,18 @@ angular.module('starter.controllers', [])
 
 .controller('FriendDetailCtrl', function ($scope, $stateParams, Friends) {
         $scope.friend = Friends.get($stateParams.friendId);
+})
+.controller('LoginCtrl', function ($scope) {
+    $scope.signup = function (usn, em, pwd) {
+            $scope.showsignupform = "false";
+            signupFunction(usn, em, pwd);
+        };
+        $scope.login = function (em, pwd) {
+            loginFunction(em, pwd);
+        };
     })
-    .controller('AccountCtrl', function ($scope) {
+.controller('AccountCtrl', function ($scope) {
         $scope.settings = {
             enableFriends: true
         };
-    });
+});

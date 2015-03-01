@@ -1,5 +1,6 @@
 <ion-view nav-bar-hide="true">
     <ion-content class="padding">
+
         <head>
             <style>
                 body {
@@ -24,8 +25,14 @@
                 <h1 class='blocktext'>Threads requrires you to login to view content!</h1>
             </Div>
         </body>
-        <!--This is the login form that allows users to log in.-->
-        <div class="list loginForm" ng-show="showLoginForm">
+        <div>
+            <!--This is the faccebook login-->
+            <button class="button button-block button-assertive" ng-hide="fbsignup" ng-click="facebookLogin()">
+                <i class="icon ion-social-facebook"></i> &nbsp;Login with Facebook
+            </button>
+        </div>
+        <!--This is the signupform  form that allows users to signup in.-->
+        <div class="list Form" ng-show="showsignupform">
             <label class="item item-input">
                 <span class="input-label">Username</span>
                 <input type="text" ngmodel="login.usn">
@@ -38,12 +45,16 @@
                 <span class="input-label">Password</span>
                 <input type="password" ng-model="login.pwd">
             </label>
-            <button class="button button-block button-assertive" ng-click="login(login.em,login.pwd)">Sign Up!</button>
+            <button class="button button-block button-assertive" ng-click="signup(signup.usn,signup.em,signup.pwd)">Sign Up!</button>
         </div>
-
-        <!--After logging in, the login form is hidden and replaced by the following badge, which tells the user what account is being used-->
-        <div class="card loginForm" ng-hide="showLoginForm" type="item-text-wrap">
-            <div class="item item-text-wrap">You are logged in as {{user.password.email}}</div>
+        <!--This is the LoginForm for existing users-->
+        <div class="list Form" ng-show="showloginform">
+            <label class="item item-input">
+                <span class="input-label">Email</span>
+                <input type="text" ng-model="login.em">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="login.pwd">
+            </label>
         </div>
-    </ion-content>
-</ion-view>
