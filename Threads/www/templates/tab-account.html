@@ -1,6 +1,6 @@
 <ion-view view-title="Account">
     <ion-content>
-        <div>
+        <div ng-hide = "hideAllSignins">
             <!--button to go to signup form-->
             <button class="button button-block button-positive" ng-click="toggleSignupForm()">
                 Create new Account with email
@@ -61,6 +61,11 @@
                 <button class="button button-block button-assertive" ng-click="FBLogin(FB.em,FB.pwd)">Login!</button>
             </div>
             
+        </div>
+        
+        <div ng-show = "hideAllSignins">
+            <div>You are logged in as {{user}}</div>
+            <button class="button button-block button-positive" ng-click="logout()">Logout</button>
         </div>
     </ion-content>
 </ion-view>

@@ -22,6 +22,7 @@ angular.module('starter.controllers', [])
 })
 .controller('AccountCtrl', function ($scope, UserFactory) {
     
+    $scope.hideAllSignins = false;
     $scope.showSignupForm = false;
     $scope.showLoginForm = false;
     $scope.showFBLogin = false;
@@ -56,6 +57,9 @@ angular.module('starter.controllers', [])
     $scope.login = function(em,pwd){
         UserFactory.login(em, pwd).then(function success(response) {
                 $scope.user = response.data.user;
+                $scope.hideAllSignins = true;
+                console.log($scope.hideAllSignins);
+                console.log(response);
         }, function handleError(response) {
             alert('Error: ' + response.data);
         });       
