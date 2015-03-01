@@ -1,0 +1,50 @@
+<ion-view hide-nav-bar='true'>
+    <ion-content>
+
+        <head>
+            <style>
+                body {
+                    background-color: #FF0000
+                }
+                
+                h1.blocktext {
+                    margin-left: auto;
+                    margin-right: auto;
+                    text-align: center;
+                    width: 10em
+                }
+                
+                h1 {
+                    color: black
+                }
+            </style>
+        </head>
+
+        <body bg-color='#FF0000'>
+            <Div>
+                <h1 class='blocktext'>Threads requrires you to login to view content!</h1>
+            </Div>
+        </body>
+        <!--This is the login form that allows users to log in.-->
+        <div class="list loginForm" ng-show="showLoginForm">
+            <label class="item item-input">
+                <span class="input-label">Username</span>
+                <input type="text" ngmodel="login.usn">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Email</span>
+                <input type="text" ng-model="login.em">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="login.pwd">
+            </label>
+            <button class="button button-block button-assertive" ng-click="login(login.em,login.pwd)">Sign Up!</button>
+        </div>
+
+        <!--After logging in, the login form is hidden and replaced by the following badge, which tells the user what account is being used-->
+        <div class="card loginForm" ng-hide="showLoginForm" type="item-text-wrap">
+            <div class="item item-text-wrap">You are logged in as {{user.password.email}}</div>
+        </div>
+    </ion-content>
+</ion-view>
