@@ -90,7 +90,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
           'tab-login': {
               templateUrl: 'templates/login.html',
-              controller: 'LoginCtrl'
+              controller: 'AccountCtrl'
+          }
+      }
+  })
 
   .state('tab.account', {
     url: '/account',
