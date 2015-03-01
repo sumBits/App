@@ -60,6 +60,8 @@ angular.module('starter.controllers', [])
                 $scope.user = response.data.user;
                 console.log(response.data);
             });
+            $scope.login.em = null;
+            $scope.login.pwd = null;
             $scope.hideAllSignins = true;
         }, function handleError(response) {
             alert('Error: ' + response.data);
@@ -73,6 +75,7 @@ angular.module('starter.controllers', [])
     $scope.logout = function(){
         UserFactory.logout();
         $scope.user = null;
+        $scope.hideAllSignins = false;
     }
     
 });
