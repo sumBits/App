@@ -1,15 +1,66 @@
 <ion-view view-title="Account">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-toggle">
-        Enable Friends
-        <label class="toggle">
-          <input type="checkbox" ng-model="settings.enableFriends">
-          <div class="track">
-            <div class="handle"></div>
-          </div>
-        </label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+    <ion-content>
+        <div>
+            <!--button to go to signup form-->
+            <button class="button button-block button-positive" ng-click="toggleSignupForm()">
+                Create new Account with email
+            </button>
+
+
+            <div class="list Form" ng-show="showSignupForm">
+                <label class="item item-input">
+                    <span class="input-label">Username:</span>
+                    <input type="text" ng-model="signup.usn">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Email:</span>
+                    <input type="text" ng-model="signup.em">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password:</span>
+                    <input type="password" ng-model="signup.pwd">
+                </label>
+                <button class="button button-block button-assertive" ng-click="signup(signup.usn,signup.em,signup.pwd)">Sign Up!</button>
+            </div>
+
+
+            <!--button to go to Login form-->
+            <button class="button button-block button-positive" ng-click="toggleLoginForm()">
+                Login to existing account
+            </button>
+            
+            
+            <div class="list Form" ng-show="showLoginForm">
+                <label class="item item-input">
+                    <span class="input-label">Email:</span>
+                    <input type="text" ng-model="login.em">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password:</span>
+                    <input type="password" ng-model="login.pwd">
+                </label>
+                <button class="button button-block button-assertive" ng-click="login(login.em,login.pwd)">Login!</button>
+            </div>
+            
+            
+            <!--This is the facebook login-->
+            <button class="button button-block button-positive" ng-click="toggleFBLogin()">
+                <i class="icon ion-social-facebook"></i> &nbsp;Login with Facebook
+            </button>
+            
+    
+            <div class="list Form" ng-show="showFBLogin">
+                <label class="item item-input">
+                    <span class="input-label">Email:</span>
+                    <input type="text" ng-model="FB.em">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password:</span>
+                    <input type="password" ng-model="FB.pwd">
+                </label>
+                <button class="button button-block button-assertive" ng-click="FBLogin(FB.em,FB.pwd)">Login!</button>
+            </div>
+            
+        </div>
+    </ion-content>
 </ion-view>
