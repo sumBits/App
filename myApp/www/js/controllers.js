@@ -1,1 +1,1 @@
-angular.module('starter.controllers', [, 'ngCordova'])
+angular.module('starter.controllers', ['ngCordova'])
