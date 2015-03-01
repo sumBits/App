@@ -50,8 +50,16 @@ angular.module('starter.controllers', [])
         $scope.showLoginForm = false;
     }
     
-    $scope.signup = function(usn,em,pwd){
-        
+    $scope.signup = function(usn,age,em,pwd){
+        UserFactory.signup(usn,age,em,pwd).then(function success(response){
+            $scope.signup.usn = null;
+            $scope.signup.age = null;
+            $scope.signup.em = null;
+            $scope.signup.pwd = null;
+            $scope.login(em,pwd);
+        }, function handleError(response){
+            alert('Error: ' + response.data);
+        });
     }
     
     $scope.login = function(em,pwd){

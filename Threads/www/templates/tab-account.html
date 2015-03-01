@@ -13,6 +13,10 @@
                     <input type="text" ng-model="signup.usn">
                 </label>
                 <label class="item item-input">
+                    <span class="input-label">Age:</span>
+                    <input type="number" ng-model="signup.age">
+                </label>
+                <label class="item item-input">
                     <span class="input-label">Email:</span>
                     <input type="text" ng-model="signup.em">
                 </label>
@@ -20,7 +24,7 @@
                     <span class="input-label">Password:</span>
                     <input type="password" ng-model="signup.pwd">
                 </label>
-                <button class="button button-block button-assertive" ng-click="signup(signup.usn,signup.em,signup.pwd)">Sign Up!</button>
+                <button class="button button-block button-assertive" ng-click="signup(signup.usn,singup.age,signup.em,signup.pwd)">Sign Up!</button>
             </div>
 
 

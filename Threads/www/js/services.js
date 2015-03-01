@@ -10,7 +10,8 @@ angular.module('starter.services', [], function config ($httpProvider) {
     return {
         login: login,
         logout: logout,
-        getUser: getUser
+        getUser: getUser,
+        signup: signup
     };
 
     function login(email, password) {
@@ -35,6 +36,17 @@ angular.module('starter.services', [], function config ($httpProvider) {
                 data: 'client has no auth token'
             });
         }
+    }
+    
+    function signup(name, age, email, pwd){
+        return $http.post(API_URL + '/login', {
+            email: email,
+            password: pwd,
+            name: name,
+            age: age
+        }).then(function success(response){
+            return response;
+        });
     }
 })
 
