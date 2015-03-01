@@ -26,8 +26,16 @@
             </Div>
         </body>
         <div>
+          <!--button to go to signup form-->
+          <button class="button button-block button-positive" ng-hide"fbsignup" ng-click"signup()">
+            Create new account
+          </button>
+           <!--button to go to Login form-->
+           <button class="button button-block button-positive" ng-hide"fbsignup" ng-click"login()">
+           Login to existing account
+           </button>
             <!--This is the faccebook login-->
-            <button class="button button-block button-assertive" ng-hide="fbsignup" ng-click="facebookLogin()">
+            <button class="button button-block button-positive" ng-hide="fbsignup" ng-click="facebookLogin()">
                 <i class="icon ion-social-facebook"></i> &nbsp;Login with Facebook
             </button>
         </div>
