@@ -6,19 +6,6 @@
 angular.module('starter', ['ionic'])
 
 .run(function ($ionicPlatform, $window, $rootScope) {
-    // Checks to see if connected to the internet
-    $rootScope.online = navigator.onLine;
-    $window.addEventListener("offline", function () {
-        $rootScope.$apply(function () {
-            $rootScope.online = false;
-        });
-    }, false);
-    $window.addEventListener("online", function () {
-        $rootScope.$apply(function () {
-            $rootScope.online = true;
-        });
-    }, false);
-    //ionic stuff
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
