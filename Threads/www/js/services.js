@@ -38,12 +38,12 @@ angular.module('starter.services', [], function config ($httpProvider) {
         }
     }
     
-    function signup(name, age, email, pwd){
+    function signup(s_name, s_age, s_email, s_pwd){
         return $http.post(API_URL + '/newUser', {
-            email: email,
-            password: pwd,
-            name: name,
-            age: age
+            "email": s_email,
+            "password": s_pwd,
+            "name": s_name,
+            "age": s_age
         }).then(function success(response){
             return response;
         });
