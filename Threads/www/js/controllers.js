@@ -46,6 +46,7 @@ angular.module('starter.controllers', [])
             $scope.signup.age = null;
             $scope.signup.em = null;
             $scope.signup.pwd = null;
+            console.log(response);
             $scope.login(em,pwd);
         }, function handleError(response){
             alert('Error: ' + response.data);
