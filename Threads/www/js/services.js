@@ -39,7 +39,7 @@ angular.module('starter.services', [], function config ($httpProvider) {
     }
     
     function signup(name, age, email, pwd){
-        return $http.post(API_URL + '/login', {
+        return $http.post(API_URL + '/newUser', {
             email: email,
             password: pwd,
             name: name,
