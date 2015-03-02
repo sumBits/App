@@ -79,5 +79,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
+})
 
+.directive('dragBack', function($ionicGesture, $state) {
+  return {
+    restrict : 'EAC',
+    link : function(scope, elem, attr) {
+      
+      console.log("Dragback Link");
+      
+      $ionicGesture.on('swiperight', function(event) {
+      
+        console.log('Got swiped!');
+        event.preventDefault();
+        window.history.back();
+        
+      }, elem);
+      
+    }
+  }  
 });
