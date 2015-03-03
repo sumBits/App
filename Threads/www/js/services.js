@@ -31,7 +31,7 @@ angular.module('starter.services', [], function config ($httpProvider) {
     function getUser() {
         if (AuthTokenFactory.getToken()) {
             return $http.post(API_URL + '/me', {
-                token: AuthTokenFactory.getToken();
+                token: AuthTokenFactory.getToken()
             });
         } else {
             return $q.reject({
