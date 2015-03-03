@@ -10,6 +10,16 @@ angular.module('starter.controllers', [])
     
 })
 
+.controller('NearbyThreadCtrl', ['$http', function($http) {
+    var store = this;
+    store.posts = {};
+
+    $http.post('/nearbyRO', {"latitude":39.25,"longitude":-104.95}).
+    success(function(data) {
+        store.products = data;
+    })
+}]);
+
 .controller('AccountCtrl', function ($scope, UserFactory) {
     
     $scope.hideAllSignins = false;
