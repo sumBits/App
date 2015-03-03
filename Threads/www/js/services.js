@@ -30,7 +30,9 @@ angular.module('starter.services', [], function config ($httpProvider) {
 
     function getUser() {
         if (AuthTokenFactory.getToken()) {
-            return $http.get(API_URL + '/me');
+            return $http.post(API_URL + '/me', {
+                token: AuthTokenFactory.getToken();
+            });
         } else {
             return $q.reject({
                 data: 'client has no auth token'
