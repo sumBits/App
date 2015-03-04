@@ -7,27 +7,15 @@
     </div>
 </ion-header-bar>
 <ion-view hide-nav-bar='true'>
-    <div class="list card">
-        <div class="item item-divider">Recent Updates</div>
+    <div class="list card" ng-repeat="post in poster.posts">
+        <div class="item item-divider"><b>{{post.title}}</b> - {{post.category}}</div>
+        <div class="item item-divider-sub "><i>{{post.name}}</i></div>
         <div class="item item-body">
             <div>
-                There is a fire in <b>sector 3</b>
+                {{post.content}}
             </div>
-        </div>
-    </div>
-    <div class="list card">
-        <div class="item item-divider">Health</div>
-        <div class="item item-body">
             <div>
-                You ate an apple today!
-            </div>
-        </div>
-    </div>
-    <div class="list card">
-        <div class="item item-divider">Upcoming</div>
-        <div class="item item-body">
-            <div>
-                You have <b>29</b> meetings on your calendar tomorrow.
+                <b>{{post.vote}}</b>
             </div>
         </div>
     </div>

@@ -1,7 +1,5 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeCtrl', function ($scope) {})
-
 .controller('LocalThreadChatCtrl', function ($scope) {
    
 })
@@ -12,12 +10,13 @@ angular.module('starter.controllers', [])
 
 .controller('NearbyThreadCtrl', ['$http', function($http) {
     var store = this;
-    store.posts = {};
+    store.posts = [{title:"hi"}];
 
-    $http.post('/nearbyRO', {"latitude":39.25,"longitude":-104.95}).
+    $http.post("http://52.10.238.99:8080" + '/nearbyRO', {"latitude":39.25,"longitude":-104.95}).
     success(function(data) {
-        store.products = data;
-    })
+        store.posts = data;
+        console.log("Stored data to store.posts:\n" + data);
+    });
 }])
 
 .controller('AccountCtrl', function ($scope, UserFactory) {
