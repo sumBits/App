@@ -18,7 +18,7 @@ angular.module('starter.controllers', [])
     success(function(data) {
         store.products = data;
     })
-}]);
+}])
 
 .controller('AccountCtrl', function ($scope, UserFactory) {
     
