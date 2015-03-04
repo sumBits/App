@@ -1,12 +1,12 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function ($scope) {})
+.controller('HomeCtrl', function ($scope) {})
 
-.controller('UserThreadChatCtrl', function ($scope) {
+.controller('LocalThreadChatCtrl', function ($scope) {
    
 })
 
-.controller('UserThreadCtrl', function ($scope, $stateParams) {
+.controller('LocalThreadCtrl', function ($scope, $stateParams) {
     
 })
 

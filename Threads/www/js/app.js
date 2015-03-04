@@ -38,22 +38,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.home', {
+    url: '/home',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-home': {
+        templateUrl: 'templates/tab-home.html',
+        controller: 'HomeCtrl'
       }
     }
   })
 
-  .state('tab.uThreads', {
-      url: '/uThreads',
+  .state('tab.lThreads', {
+      url: '/lThreads',
       views: {
         'tab-uThreads': {
-          templateUrl: 'templates/tab-uThreads.html',
-          controller: 'UserThreadCtrl'
+          templateUrl: 'templates/tab-lThreads.html',
+          controller: 'LocalThreadCtrl'
         }
       }
     })
@@ -61,8 +61,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/uThread/:uThreadId',
       views: {
         'tab-uThreads': {
-          templateUrl: 'templates/uThread-chat.html',
-          controller: 'UserThreadChatCtrl'
+          templateUrl: 'templates/lThread-chat.html',
+          controller: 'LocalThreadChatCtrl'
         }
       }
     })
@@ -78,6 +78,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
-
+  $urlRouterProvider.otherwise('/tab/home');
 });
+
+// could put a url routerprovider here if the person is not logged in or in the .run at top -sam
