@@ -84,4 +84,17 @@ angular.module('starter.services', [], function config ($httpProvider) {
         }
         return config;
     }
+})
+
+.factory('NearbyThreadsGetter', function NearbyThradsGetter($http, API_URL, $q) {
+    var factory = [];
+
+    factory.getNearby = function(location) {
+        return $http.post(API_URL + '/nearbyRO', location)
+        .then(function success(response) {
+            console.log("Returned data:\n" + response);
+            return response.data;
+        });
+    }
+    return factory;
 });

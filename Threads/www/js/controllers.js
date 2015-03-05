@@ -8,16 +8,15 @@ angular.module('starter.controllers', [])
     
 })
 
-.controller('NearbyThreadCtrl', ['$http', function($http) {
-    var store = this;
-    store.posts = [{title:"hi"}];
+.controller('NearbyThreadCtrl', function($scope, NearbyThreadsGetter) {
+    $scope.posts = NearbyThreadsGetter.getNearby({"latitude":39.25,"longitude":-104.95});
 
-    $http.post("http://52.10.238.99:8080" + '/nearbyRO', {"latitude":39.25,"longitude":-104.95}).
-    success(function(data) {
-        store.posts = data;
-        console.log("Stored data to store.posts:\n" + data);
+    NearbyThreadsGetter.getNearby({"latitude":39.25,"longitude":-104.95}).then(function(response) {
+        console.log(response);
+        console.log(response[0])
+        $scope.posts = response;
     });
-}])
+})
 
 .controller('AccountCtrl', function ($scope, UserFactory) {
     
