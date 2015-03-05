@@ -86,8 +86,10 @@ angular.module('starter.services', [], function config ($httpProvider) {
     }
 })
 
-.factory('NearbyThreadsGetter', function NearbyThradsGetter($http, API_URL, $q) {
-    var factory = [];
+.factory('NearbyThreadsGetter', function NearbyThradsGetter($http, API_URL) {
+    var factory = {
+        nearbyRefresh: nearbyRefresh
+    };
 
     factory.getNearby = function(location) {
         return $http.post(API_URL + '/nearbyRO', location)
@@ -96,5 +98,10 @@ angular.module('starter.services', [], function config ($httpProvider) {
             return response.data;
         });
     }
+
+    function nearbyRefresh(location) {
+        return factory.getNearby(location);
+    }
+
     return factory;
 });

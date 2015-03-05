@@ -16,6 +16,15 @@ angular.module('starter.controllers', [])
         console.log(response[0])
         $scope.posts = response;
     });
+
+    $scope.nearbyRefresh = function() {
+        NearbyThreadsGetter.nearbyRefresh({"latitude":39.25,"longitude":-104.95})
+        .then(function(response) {
+            $scope.posts = response;
+        }).finally(function() {
+            $scope.$broadcast('scroll.refreshComplete');
+        });
+    }
 })
 
 .controller('AccountCtrl', function ($scope, UserFactory) {
