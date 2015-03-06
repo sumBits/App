@@ -6,7 +6,7 @@
         </label>
     </div>
 </ion-header-bar>
-<ion-view hide-nav-bar='true' view-title="Local Threads">
+<ion-view hide-nav-bar='true' view-title="Local Threads" ng-init="nearbyRefresh()">
     <ion-content>
         <ion-refresher
             pulling-text="Pull down to refresh..."

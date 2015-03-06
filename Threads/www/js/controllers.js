@@ -9,20 +9,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('NearbyThreadCtrl', function ($scope, NearbyThreadsGetter) {
-    $scope.posts = NearbyThreadsGetter.getNearby({
-        "latitude": 39.25,
-        "longitude": -104.95
-    });
-
-    NearbyThreadsGetter.getNearby({
-        "latitude": 39.25,
-        "longitude": -104.95
-    }).then(function (response) {
-        console.log(response);
-        console.log(response[0])
-        $scope.posts = response;
-    });
-
+    
     $scope.nearbyRefresh = function () {
         navigator.geolocation.getCurrentPosition(function (position) {
             $scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
