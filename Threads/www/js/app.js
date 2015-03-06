@@ -41,7 +41,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('tab.localThreads', {
     url: '/lThreads',
     views: {
-      'tab-home': {
+      'tab-localThreads': {
         templateUrl: 'templates/tab-localThreads.html',
         controller: 'NearbyThreadCtrl'
       }
@@ -51,7 +51,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('tab.userThreads', {
       url: '/uThreads',
       views: {
-        'tab-uThreads': {
+        'tab-userThreads': {
           templateUrl: 'templates/tab-userThreads.html',
           controller: 'UserThreadCtrl'
         }
@@ -60,7 +60,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     .state('tab.uThread-chat', {
       url: '/uThread/:uThreadId',
       views: {
-        'tab-uThreads': {
+        'tab-userThreads': {
           templateUrl: 'templates/userThread-chat.html',
           controller: 'UserThreadChatCtrl'
         }
