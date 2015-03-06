@@ -7,25 +7,25 @@
             </button>
 
 
-            <div class="list Form" ng-show="showSignupForm">
+            <form name = "newAccount" class="list Form" ng-show="showSignupForm">
                 <label class="item item-input">
                     <span class="input-label">Username:</span>
-                    <input type="text" ng-model="signup.usn">
+                    <input type="text" ng-model="signup.usn" required>
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Age:</span>
-                    <input type="number" ng-model="signup.age">
+                    <input type="number" ng-model="signup.age" required>
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Email:</span>
-                    <input type="text" ng-model="signup.em">
+                    <input type="email" ng-model="signup.em" min="17" max="100" required>
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Password:</span>
-                    <input type="password" ng-model="signup.pwd">
+                    <input type="password" ng-model="signup.pwd" required>
                 </label>
-                <button class="button button-block button-assertive" ng-click="signup(signup.usn,singup.age,signup.em,signup.pwd)">Sign Up!</button>
-            </div>
+                <button class="button button-block button-assertive" ng-click="signup(signup.usn,singup.age,signup.em,signup.pwd)" ng-disabled = "newAccount.$invalid">Sign Up!</button>
+            </form>
 
 
             <!--button to go to Login form-->
@@ -34,17 +34,17 @@
             </button>
             
             
-            <div class="list Form" ng-show="showLoginForm">
+            <form name = "loginForm" class="list Form" ng-show="showLoginForm">
                 <label class="item item-input">
                     <span class="input-label">Email:</span>
-                    <input type="text" ng-model="login.em">
+                    <input type="email" ng-model="login.em" required>
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Password:</span>
-                    <input type="password" ng-model="login.pwd">
+                    <input type="password" ng-model="login.pwd" required>
                 </label>
-                <button class="button button-block button-assertive" ng-click="login(login.em,login.pwd)">Login!</button>
-            </div>
+                <button class="button button-block button-assertive" ng-click="login(login.em,login.pwd)" ng-disabled ="loginForm.$invalid">Login!</button>
+            </form>
             
             
             <!--This is the facebook login-->
@@ -53,17 +53,17 @@
             </button>
             
     
-            <div class="list Form" ng-show="showFBLogin">
+            <form name = "FBLoginForm" class="list Form" ng-show="showFBLogin">
                 <label class="item item-input">
                     <span class="input-label">Email:</span>
-                    <input type="text" ng-model="FB.em">
+                    <input type="email" ng-model="FB.em" required>
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Password:</span>
-                    <input type="password" ng-model="FB.pwd">
+                    <input type="password" ng-model="FB.pwd" required>
                 </label>
-                <button class="button button-block button-assertive" ng-click="FBLogin(FB.em,FB.pwd)">Login!</button>
-            </div>
+                <button class="button button-block button-assertive" ng-click="FBLogin(FB.em,FB.pwd)" ng-disabled = "FBLoginForm.$invalid">Login!</button>
+            </form>
             
         </div>
         
