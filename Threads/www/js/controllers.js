@@ -1,10 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('LocalThreadChatCtrl', function ($scope) {
+.controller('UserThreadChatCtrl', function ($scope) {
    
 })
 
-.controller('LocalThreadCtrl', function ($scope, $stateParams) {
+.controller('UserThreadCtrl', function ($scope, $stateParams) {
     
 })
 

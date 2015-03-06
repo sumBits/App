@@ -38,22 +38,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.home', {
-    url: '/home',
+  .state('tab.localThreads', {
+    url: '/lThreads',
     views: {
       'tab-home': {
-        templateUrl: 'templates/tab-home.html',
+        templateUrl: 'templates/tab-localThreads.html',
         controller: 'NearbyThreadCtrl'
       }
     }
   })
 
-  .state('tab.lThreads', {
-      url: '/lThreads',
+  .state('tab.userThreads', {
+      url: '/uThreads',
       views: {
         'tab-uThreads': {
-          templateUrl: 'templates/tab-lThreads.html',
-          controller: 'LocalThreadCtrl'
+          templateUrl: 'templates/tab-userThreads.html',
+          controller: 'UserThreadCtrl'
         }
       }
     })
@@ -61,8 +61,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/uThread/:uThreadId',
       views: {
         'tab-uThreads': {
-          templateUrl: 'templates/lThread-chat.html',
-          controller: 'LocalThreadChatCtrl'
+          templateUrl: 'templates/userThread-chat.html',
+          controller: 'UserThreadChatCtrl'
         }
       }
     })
