@@ -38,24 +38,27 @@ angular.module('starter.controllers', [])
                 console.log("latitude: ", $scope.currentLocation.k);
                 console.log("longitude: ", $scope.currentLocation.D);
 
-                NearbyThreadsGetter.nearbyPost({
-                    "latitude": $scope.currentLocation.k,
-                    "longitude": $scope.currentLocation.D,
-                    "post": {
-                        "title": "Default Title: MUST BE REMOVED",
-                        "content": $scope.post.content,
-                        "category": $scope.category,
-                        "votes": 1
-                    },
-                    "token": AuthTokenFactory.getToken()
+                    NearbyThreadsGetter.nearbyPost({
+                        "latitude": $scope.currentLocation.k,
+                        "longitude": $scope.currentLocation.D,
+                        "post": {
+                            "title": "Default Title: MUST BE REMOVED",
+                            "content": $scope.post.content,
+                            "category": $scope.category,
+                            "votes": 1
+                        },
+                        "token": AuthTokenFactory.getToken()
+                    });
+                    
+                $scope.post.content = null;
+                
+                }, function (error) {
+                    alert(error);
                 });
-            }, function (error) {
-                alert(error);
-            });
-        } else{
-        alert("You are not signed in. Posting requires that you sign in.");
+            } else{
+            alert("You are not signed in. Posting requires that you sign in.");
+        }
     }
-}
 })
 
 .controller('AccountCtrl', function ($scope, UserFactory) {
