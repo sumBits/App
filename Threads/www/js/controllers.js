@@ -8,8 +8,8 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('NearbyThreadCtrl', function ($scope, NearbyThreadsGetter) {
-    
+.controller('NearbyThreadCtrl', function ($scope, NearbyThreadsGetter, AuthTokenFactory) {
+
     $scope.nearbyRefresh = function () {
         navigator.geolocation.getCurrentPosition(function (position) {
             $scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -30,6 +30,32 @@ angular.module('starter.controllers', [])
             alert(error);
         });
     };
+
+    $scope.nearbyPost = function () {
+        if (AuthTokenFactory.getToken()) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                $scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                console.log("latitude: ", $scope.currentLocation.k);
+                console.log("longitude: ", $scope.currentLocation.D);
+
+                NearbyThreadsGetter.nearbyPost({
+                    "latitude": $scope.currentLocation.k,
+                    "longitude": $scope.currentLocation.D,
+                    "post": {
+                        "title": "Default Title: MUST BE REMOVED",
+                        "content": $scope.post.content,
+                        "category": $scope.category,
+                        "votes": 1
+                    },
+                    "token": AuthTokenFactory.getToken()
+                });
+            }, function (error) {
+                alert(error);
+            });
+        } else{
+        alert("You are not signed in. Posting requires that you sign in.");
+    }
+}
 })
 
 .controller('AccountCtrl', function ($scope, UserFactory) {

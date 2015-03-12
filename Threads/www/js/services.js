@@ -88,7 +88,8 @@ angular.module('starter.services', [], function config ($httpProvider) {
 
 .factory('NearbyThreadsGetter', function NearbyThradsGetter($http, API_URL) {
     var factory = {
-        nearbyRefresh: nearbyRefresh
+        nearbyRefresh: nearbyRefresh,
+        nearbyPost: nearbyPost
     };
 
     factory.getNearby = function(location) {
@@ -96,6 +97,13 @@ angular.module('starter.services', [], function config ($httpProvider) {
         .then(function success(response) {
             console.log("Returned data:\n" + response);
             return response.data;
+        });
+    }
+    
+    function nearbyPost(post){
+        return $http.post(API_URL + '/nearbyPost', post)
+        .then(function success(response){
+            console.log("Comment has been posted");
         });
     }
 

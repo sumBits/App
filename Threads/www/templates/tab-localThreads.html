@@ -24,4 +24,12 @@
             </div>
         </div>
     </ion-content>
+    <form class = "nearbyPostForm">
+        <div class = "item item-input-inset">
+           <label class = "item-input-wrapper">
+                <input type="text" placeholder="Type something here..." maxlength="140" ng-model="post.content">
+           </label>            
+           <button class = "button button-small" ng-click="nearbyPost()">Post</button>
+        </div>
+    </form>
 </ion-view>
