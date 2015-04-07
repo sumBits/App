@@ -38,24 +38,24 @@ angular.module('starter.controllers', [])
                 console.log("latitude: ", $scope.currentLocation.k);
                 console.log("longitude: ", $scope.currentLocation.D);
 
-                    NearbyThreadsGetter.nearbyPost({
-                        "latitude": $scope.currentLocation.k,
-                        "longitude": $scope.currentLocation.D,
-                        "post": {
-                            "title": "Default Title: MUST BE REMOVED",
-                            "content": $scope.post.content,
-                            "category": $scope.category,
-                            "votes": 1
-                        },
-                        "token": AuthTokenFactory.getToken()
-                    });
-                    
-                $scope.post.content = null;
-                
-                }, function (error) {
-                    alert(error);
+                NearbyThreadsGetter.nearbyPost({
+                    "latitude": $scope.currentLocation.k,
+                    "longitude": $scope.currentLocation.D,
+                    "post": {
+                        "title": "Default Title: MUST BE REMOVED",
+                        "content": $scope.post.content,
+                        "category": $scope.category,
+                        "votes": 1
+                    },
+                    "token": AuthTokenFactory.getToken()
                 });
-            } else{
+
+                $scope.post.content = null;
+
+            }, function (error) {
+                alert(error);
+            });
+        } else {
             alert("You are not signed in. Posting requires that you sign in.");
         }
     }
@@ -67,6 +67,7 @@ angular.module('starter.controllers', [])
     $scope.showSignupForm = false;
     $scope.showLoginForm = false;
     $scope.showFBLogin = false;
+    $scope.showInfo = false;
 
     // initialization
     UserFactory.getUser().then(function success(response) {
@@ -89,6 +90,10 @@ angular.module('starter.controllers', [])
         $scope.showFBLogin = !($scope.showFBLogin);
         $scope.showSignupForm = false;
         $scope.showLoginForm = false;
+    }
+
+    $scope.toggleInfo = function () {
+        $scope.showInfo = true;
     }
 
     $scope.signup = function (usn, age, em, pwd) {

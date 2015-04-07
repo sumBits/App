@@ -75,6 +75,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'AccountCtrl'
       }
     }
+  })
+  .state('tab.EULA', {
+      url: '/EULA',
+      views: {
+          'tab-EULA': {
+              templateUrl: 'templates/account-EULA.html',
+              controller: 'AccountCtrl'
+          }
+      }
   });
 
   // if none of the above states are matched, use this as the fallback

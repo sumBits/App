@@ -1,13 +1,13 @@
 <ion-view view-title="Account">
     <ion-content>
-        <div ng-hide = "hideAllSignins">
+        <div ng-hide="hideAllSignins">
             <!--button to go to signup form-->
             <button class="button button-block button-positive" ng-click="toggleSignupForm()">
                 Create new Account with email
             </button>
 
 
-            <form name = "newAccount" class="list Form" ng-show="showSignupForm">
+            <form name="newAccount" class="list Form" ng-show="showSignupForm">
                 <label class="item item-input">
                     <span class="input-label">Username:</span>
                     <input type="text" ng-model="signup.usn" required>
@@ -24,7 +24,7 @@
                     <span class="input-label">Password:</span>
                     <input type="password" ng-model="signup.pwd" required>
                 </label>
-                <button class="button button-block button-assertive" ng-click="signup(signup.usn,singup.age,signup.em,signup.pwd)" ng-disabled = "newAccount.$invalid">Sign Up!</button>
+                <button class="button button-block button-assertive" ng-click="signup(signup.usn,singup.age,signup.em,signup.pwd)" ng-disabled="newAccount.$invalid">Sign Up!</button>
             </form>
 
 
@@ -32,9 +32,9 @@
             <button class="button button-block button-positive" ng-click="toggleLoginForm()">
                 Login to existing account
             </button>
-            
-            
-            <form name = "loginForm" class="list Form" ng-show="showLoginForm">
+
+
+            <form name="loginForm" class="list Form" ng-show="showLoginForm">
                 <label class="item item-input">
                     <span class="input-label">Email:</span>
                     <input type="email" ng-model="login.em" required>
@@ -43,17 +43,17 @@
                     <span class="input-label">Password:</span>
                     <input type="password" ng-model="login.pwd" required>
                 </label>
-                <button class="button button-block button-assertive" ng-click="login(login.em,login.pwd)" ng-disabled ="loginForm.$invalid">Login!</button>
+                <button class="button button-block button-assertive" ng-click="login(login.em,login.pwd)" ng-disabled="loginForm.$invalid">Login!</button>
             </form>
-            
-            
+
+
             <!--This is the facebook login-->
             <button class="button button-block button-positive" ng-click="toggleFBLogin()">
                 <i class="icon ion-social-facebook-outline"></i> &nbsp;Login with Facebook
             </button>
-            
-    
-            <form name = "FBLoginForm" class="list Form" ng-show="showFBLogin">
+
+
+            <form name="FBLoginForm" class="list Form" ng-show="showFBLogin">
                 <label class="item item-input">
                     <span class="input-label">Email:</span>
                     <input type="email" ng-model="FB.em" required>
@@ -62,12 +62,23 @@
                     <span class="input-label">Password:</span>
                     <input type="password" ng-model="FB.pwd" required>
                 </label>
-                <button class="button button-block button-assertive" ng-click="FBLogin(FB.em,FB.pwd)" ng-disabled = "FBLoginForm.$invalid">Login!</button>
+                <button class="button button-block button-assertive" ng-click="FBLogin(FB.em,FB.pwd)" ng-disabled="FBLoginForm.$invalid">Login!</button>
             </form>
+            <!-- EULA Privacy Policy and other information -->
+            <button class="button button-block button-positive" ng-click="toggleInfo()">
+                &nbsp;App Info
+            </button>
             
+            <button class="button button-block button-assertive" ng-show="showInfo">
+                EULA
+            </button>
+             <button class="button button-block button-assertive" ng-show="showInfo">
+                Privacy Policy
+            </button>
+
         </div>
-        
-        <div ng-show = "hideAllSignins">
+
+        <div ng-show="hideAllSignins">
             <div>You are logged in as {{user}}</div>
             <button class="button button-block button-positive" ng-click="logout()">Logout</button>
         </div>
