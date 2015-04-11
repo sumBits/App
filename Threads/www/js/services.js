@@ -100,9 +100,10 @@ angular.module('starter.services', [], function config ($httpProvider) {
         });
     }
     
-    function nearbyPost(post){
+    function nearbyPost(post, cb){
         return $http.post(API_URL + '/nearbyPost', post)
         .then(function success(response){
+            cb(post);
             console.log("Comment has been posted");
         });
     }

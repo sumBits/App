@@ -39,13 +39,17 @@ angular.module('starter.controllers', [])
                 console.log("longitude: ", $scope.currentLocation.D);
 
                 NearbyThreadsGetter.nearbyPost({
-                    "post":{
+                    "post": {
                         "latitude": $scope.currentLocation.k,
                         "longitude": $scope.currentLocation.D,
                         "content": $scope.post.content,
                         "category": $scope.category,
-                        "vote": 1},
+                        "vote": 1
+                    },
                     "token": AuthTokenFactory.getToken()
+                }, function(post){
+                    post.post.timestamp = Date.now();
+                    $scope.posts.push(post.post);
                 });
 
                 $scope.post.content = null;
