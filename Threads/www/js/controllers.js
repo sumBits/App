@@ -39,14 +39,12 @@ angular.module('starter.controllers', [])
                 console.log("longitude: ", $scope.currentLocation.D);
 
                 NearbyThreadsGetter.nearbyPost({
-                    "latitude": $scope.currentLocation.k,
-                    "longitude": $scope.currentLocation.D,
-                    "post": {
-                        "title": "Default Title: MUST BE REMOVED",
+                    "post":{
+                        "latitude": $scope.currentLocation.k,
+                        "longitude": $scope.currentLocation.D,
                         "content": $scope.post.content,
                         "category": $scope.category,
-                        "votes": 1
-                    },
+                        "vote": 1},
                     "token": AuthTokenFactory.getToken()
                 });
 
