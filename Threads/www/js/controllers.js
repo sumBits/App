@@ -43,8 +43,7 @@ angular.module('starter.controllers', [])
                         "latitude": $scope.currentLocation.k,
                         "longitude": $scope.currentLocation.D,
                         "content": $scope.post.content,
-                        "category": $scope.category,
-                        "vote": 1
+                        "author": $scope.user.username
                     },
                     "token": AuthTokenFactory.getToken()
                 }, function(post){
@@ -115,6 +114,7 @@ angular.module('starter.controllers', [])
         UserFactory.login(em, pwd).then(function success(response) {
             UserFactory.getUser().then(function success(response) {
                 $scope.user = response.data.user;
+                $scope.username = response.data.username;
                 console.log(response.data);
             });
             $scope.login.em = null;
@@ -132,6 +132,7 @@ angular.module('starter.controllers', [])
     $scope.logout = function () {
         UserFactory.logout();
         $scope.user = null;
+        $scope.username = null;
         $scope.hideAllSignins = false;
     }
 
