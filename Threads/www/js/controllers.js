@@ -12,13 +12,12 @@ angular.module('starter.controllers', [])
 
     $scope.nearbyRefresh = function () {
         navigator.geolocation.getCurrentPosition(function (position) {
-            $scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            console.log("latitude: ", $scope.currentLocation.k);
-            console.log("longitude: ", $scope.currentLocation.D);
+            console.log("latitude from geolocation: ", position.coords.latitude)
+            console.log("Longitude from geolocation: ", position.coords.longitude)
 
             NearbyThreadsGetter.nearbyRefresh({
-                    "latitude": $scope.currentLocation.k,
-                    "longitude": $scope.currentLocation.D
+                    "latitude": position.coords.latitude,
+                    "longitude": position.coords.longitude
                 })
                 .then(function (response) {
                     $scope.posts = response;
