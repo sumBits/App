@@ -65,16 +65,23 @@
                 <button class="button button-block button-assertive" ng-click="FBLogin(FB.em,FB.pwd)" ng-disabled="FBLoginForm.$invalid">Login!</button>
             </form>
             <!-- EULA Privacy Policy and other information -->
+
             <button class="button button-block button-positive" ng-click="toggleInfo()">
                 &nbsp;App Info
             </button>
-            
-            <button class="button button-block button-assertive" ng-show="showInfo">
-                EULA
-            </button>
-             <button class="button button-block button-assertive" ng-show="showInfo">
-                Privacy Policy
-            </button>
+            <div style="margin: 0px 20px 0px 20px" ng-show="showInfo">
+                <div>
+                    <a class="item item-icon-left positive" href="#/tab/eula">
+                        <i class="icon ion-ios7-arrow-forward"></i> EULA
+                    </a>
+                </div>
+                <div>
+                    <a class="item item-icon-left positive" href="#/tab/privacy">
+                        <i class="icon ion-ios7-arrow-forward"></i> Privacy Policy
+                    </a>
+                </div>
+
+            </div>
 
         </div>
 

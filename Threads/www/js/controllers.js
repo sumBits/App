@@ -93,7 +93,11 @@ angular.module('starter.controllers', [])
     }
 
     $scope.toggleInfo = function () {
-        $scope.showInfo = true;
+        if($scope.showInfo) {
+            $scope.showInfo = false;
+        }else {
+            $scope.showInfo = true;
+        }
     }
 
     $scope.signup = function (usn, age, em, pwd) {

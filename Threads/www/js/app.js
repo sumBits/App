@@ -76,11 +76,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
-  .state('tab.EULA', {
-      url: '/EULA',
+  .state('tab.eula', {
+            url: '/eula',
+            views: {
+                'tab-account': {
+                    templateUrl: 'templates/account-eula.html',
+                    controller: 'AccountCtrl'
+                }
+            }
+        })
+  .state('tab.privacy', {
+      url: '/privacy',
       views: {
-          'tab-EULA': {
-              templateUrl: 'templates/account-EULA.html',
+          'tab-account': {
+              templateUrl: 'templates/account-privacy.html',
               controller: 'AccountCtrl'
           }
       }
