@@ -8,7 +8,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('NearbyThreadCtrl', function ($scope, NearbyThreadsGetter, AuthTokenFactory) {
+.controller('NearbyThreadCtrl', function ($scope, NearbyThreadsGetter, AuthTokenFactory, UserFactory) {
 
     $scope.nearbyRefresh = function () {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -33,25 +33,27 @@ angular.module('starter.controllers', [])
     $scope.nearbyPost = function () {
         if (AuthTokenFactory.getToken()) {
             navigator.geolocation.getCurrentPosition(function (position) {
-                $scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                console.log("latitude: ", $scope.currentLocation.k);
-                console.log("longitude: ", $scope.currentLocation.D);
+                UserFactory.getUser().then(function success (response) {
+                    console.log("latitude: ", position.coords.latitude);
+                    console.log("longitude: ", position.coords.longitude);
+                    console.log("content: ", $scope.post.content);
+                    console.log("author: ", response.data.user)
 
-                NearbyThreadsGetter.nearbyPost({
-                    "post": {
-                        "latitude": $scope.currentLocation.k,
-                        "longitude": $scope.currentLocation.D,
-                        "content": $scope.post.content,
-                        "author": $scope.user.username
-                    },
-                    "token": AuthTokenFactory.getToken()
-                }, function(post){
-                    post.post.timestamp = Date.now();
-                    $scope.posts.push(post.post);
-                });
+                    NearbyThreadsGetter.nearbyPost({
+                        "post": {
+                            "latitude": position.coords.latitude,
+                            "longitude": position.coords.longitude,
+                            "content": $scope.post.content,
+                            "author": response.data.user
+                        },
+                        "token": AuthTokenFactory.getToken()
+                    }, function(post){
+                        post.post.timestamp = Date.now();
+                        $scope.posts.push(post.post);
+                    });
 
-                $scope.post.content = null;
-
+                    $scope.post.content = null;
+                })
             }, function (error) {
                 alert(error);
             });
@@ -117,7 +119,6 @@ angular.module('starter.controllers', [])
         UserFactory.login(em, pwd).then(function success(response) {
             UserFactory.getUser().then(function success(response) {
                 $scope.user = response.data.user;
-                $scope.username = response.data.username;
                 console.log(response.data);
             });
             $scope.login.em = null;
