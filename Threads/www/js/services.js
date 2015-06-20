@@ -44,7 +44,7 @@ angular.module('starter.services', [], function config ($httpProvider) {
         return $http.post(API_URL + '/newUser', {
             "email": s_email,
             "password": s_pwd,
-            "name": s_name,
+            "username": s_name,
             "age": s_age
         }).then(function success(response){
             return response;
