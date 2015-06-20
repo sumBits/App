@@ -96,6 +96,7 @@ angular.module('starter.services', [], function config ($httpProvider) {
         return $http.post(API_URL + '/nearbyRO', location)
         .then(function success(response) {
             console.log("Returned data:\n" + response);
+            console.dir(response);
             return response.data;
         });
     }
