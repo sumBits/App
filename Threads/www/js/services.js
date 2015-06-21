@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('starter.services', [], function config ($httpProvider) {
-        $httpProvider.interceptors.push('AuthInterceptor');
-    })
+angular.module('starter.services', [], function config($httpProvider) {
+    $httpProvider.interceptors.push('AuthInterceptor');
+})
 
 .constant('API_URL', 'http://52.10.238.99:8080')
 
@@ -39,14 +39,14 @@ angular.module('starter.services', [], function config ($httpProvider) {
             });
         }
     }
-    
-    function signup(s_name, s_age, s_email, s_pwd){
+
+    function signup(s_name, s_age, s_email, s_pwd) {
         return $http.post(API_URL + '/newUser', {
             "email": s_email,
             "password": s_pwd,
             "username": s_name,
             "age": s_age
-        }).then(function success(response){
+        }).then(function success(response) {
             return response;
         });
     }
@@ -72,41 +72,56 @@ angular.module('starter.services', [], function config ($httpProvider) {
             }
         }
     })
-.factory('AuthInterceptor', function AuthInterceptor(AuthTokenFactory){
-    return {
-        request: addToken
-    };
+    .factory('AuthInterceptor', function AuthInterceptor(AuthTokenFactory) {
+        return {
+            request: addToken
+        };
+
         function addToken(config) {
-        var token = AuthTokenFactory.getToken();
-        if (token) {
-            config.headers = config.headers || {};
-            config.headers.Authorization = 'Bearer ' + token;
+            var token = AuthTokenFactory.getToken();
+            if (token) {
+                config.headers = config.headers || {};
+                config.headers.Authorization = 'Bearer ' + token;
+            }
+            return config;
         }
-        return config;
-    }
-})
+    })
 
 .factory('NearbyThreadsGetter', function NearbyThradsGetter($http, API_URL) {
     var factory = {
         nearbyRefresh: nearbyRefresh,
-        nearbyPost: nearbyPost
+        nearbyPost: nearbyPost,
+        upvote: upvote,
+        downvote: downvote
     };
 
-    factory.getNearby = function(location) {
+    factory.getNearby = function (location) {
         return $http.post(API_URL + '/nearbyRO', location)
-        .then(function success(response) {
-            console.log("Returned data:\n" + response);
-            console.dir(response);
-            return response.data;
+            .then(function success(response) {
+                console.log("Returned data:\n" + response);
+                console.dir(response);
+                return response.data;
+            });
+    }
+
+    function upvote(id) {
+        return $http.post(API_URL + '/upvote', id).then(function success(response) {
+            console.log("Upvote Successful")
         });
     }
-    
-    function nearbyPost(post, cb){
-        return $http.post(API_URL + '/nearbyPost', post)
-        .then(function success(response){
-            cb(post);
-            console.log("Comment has been posted");
+
+    function downvote(id) {
+        return $http.post(API_URL + '/downvote', id).then(function success(response) {
+            console.log("Downvote Successful")
         });
+    }
+
+    function nearbyPost(post, cb) {
+        return $http.post(API_URL + '/nearbyPost', post)
+            .then(function success(response) {
+                cb(post);
+                console.log("Comment has been posted");
+            });
     }
 
     function nearbyRefresh(location) {

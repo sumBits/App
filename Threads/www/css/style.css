@@ -6,3 +6,17 @@
     width: 100%;
 }
 
+.overlayRight{
+    float: right;
+    position: relative;
+    top: 0px;
+    left: -40px;
+    padding: 0px;
+    margin: -40px;
+}
+
+.overlayRight li{
+    display: inline;
+    padding: 10px;
+}
+

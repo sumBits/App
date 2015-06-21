@@ -1,27 +1,27 @@
 <ion-view hide-nav-bar='true' view-title="Local Threads" ng-init="nearbyRefresh()">
     <ion-content>
-        <ion-refresher
-            pulling-text="Pull down to refresh..."
-            on-refresh="nearbyRefresh()">
+        <ion-refresher pulling-text="Pull down to refresh..." on-refresh="nearbyRefresh()">
         </ion-refresher>
-        <div class="list card" ng-repeat="post in posts">
-            <div class="item item-divider"><b>{{post.author}}</b> - {{post.timestamp | date:'MMM dd - hh:mm a'}}</div>
-            <div class="item item-body">
-                <div>
-                    {{post.content}}
+
+        <ion-list>
+            <ion-item ng-repeat="post in posts">
+                <div class="item item-divider"><b>{{post.author}}</b> - {{post.timestamp | date:'MMM dd - hh:mm a'}}</div>
+                <div class="item-body">{{post.content}}
                 </div>
-                <div>
-                    <b>{{post.vote}}</b>
-                </div>
-            </div>
-        </div>
+                <ul class="overlayRight">
+                    <li class = "button button-light button-small" ng-click = "vote(post.postid, true)"><i class = "icon ion-chevron-up"></i></li>
+                    <li>{{post.vote}}</li>
+                    <li class = "button button-light button-small" ng-click = "vote(post.postid, false)"><i class = "icon ion-chevron-down"></i></li>
+                </ul>    
+            </ion-item>
+        </ion-list>
     </ion-content>
-    <form class = "nearbyPostForm">
-        <div class = "item item-input-inset">
-           <label class = "item-input-wrapper">
+    <form class="nearbyPostForm">
+        <div class="item item-input-inset">
+            <label class="item-input-wrapper">
                 <input type="text" placeholder="Type something here..." maxlength="140" ng-model="post.content">
-           </label>            
-           <button class = "button button-small" ng-click="nearbyPost()">Post</button>
+            </label>
+            <button class="button button-small" ng-click="nearbyPost()">Post</button>
         </div>
     </form>
 </ion-view>

@@ -49,7 +49,7 @@ angular.module('starter.controllers', [])
                         "token": AuthTokenFactory.getToken()
                     }, function(post){
                         post.post.timestamp = Date.now();
-                        $scope.posts.push(post.post);
+                        $scope.posts.splice(0,0,post.post);
                     });
 
                     $scope.post.content = null;
@@ -60,6 +60,18 @@ angular.module('starter.controllers', [])
         } else {
             alert("You are not signed in. Posting requires that you sign in.");
         }
+    }
+    
+    $scope.vote = function(postid, dirCondition){
+        console.log("Vote function active on post: " + postid);
+        if(dirCondition){
+            console.log("Upvoting");
+            NearbyThreadsGetter.upvote(postid);
+        }else{
+            console.log("Downvoting");
+            NearbyThreadsGetter.downvote(postid);
+        }
+       
     }
 })
 
