@@ -105,8 +105,17 @@ angular.module('starter.services', [], function config($httpProvider) {
     }
 
     function upvote(id) {
-        return $http.post(API_URL + '/upvote', id).then(function success(response) {
-            console.log("Upvote Successful")
+        //        return $http.post(API_URL + '/upvote', id).then(function success(response) {
+        //            console.log("Upvote Successful")
+        //        });
+        return $http({
+            method: 'POST',
+            //withCredentials:true,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
+            params: id,
+            url: API_URL+'/upvote'
         });
     }
 
