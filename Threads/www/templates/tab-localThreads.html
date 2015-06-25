@@ -4,10 +4,9 @@
         </ion-refresher>
 
         <ion-list>
-            <ion-item ng-repeat="post in posts">
+            <ion-item ng-repeat="post in posts | orderBy: myOrderBy:true" >
                 <div class="item item-divider"><b>{{post.author}}</b> - {{post.timestamp | date:'MMM dd - hh:mm a'}}</div>
-                <div class="item-body">{{post.content}}
-                </div>
+                <div class="item-body">{{}}{{post.content}}</div>
                 <ul class="overlayRight">
                     <li class="button button-light button-small" ng-click="vote(post.postid, true)"><i class="icon ion-chevron-up"></i>
                     </li>

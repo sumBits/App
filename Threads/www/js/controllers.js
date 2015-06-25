@@ -9,7 +9,16 @@ angular.module('starter.controllers', [])
 })
 
 .controller('NearbyThreadCtrl', function ($scope, NearbyThreadsGetter, AuthTokenFactory, UserFactory) {
+    $scope.myOrderBy = function (post) {
+        console.log(post.timestamp);
+        var myDate = new Date(post.timestamp);
+        console.log(myDate);
+        var offset = myDate.getTimezoneOffset() * 1000;
 
+        var withOffset = myDate.getTime();
+        console.log(withOffset);
+        return withOffset;
+    }
     $scope.nearbyRefresh = function () {
         navigator.geolocation.getCurrentPosition(function (position) {
             console.log("latitude from geolocation: ", position.coords.latitude)
@@ -51,7 +60,7 @@ angular.module('starter.controllers', [])
                         post.post.timestamp = Date.now();
                         $scope.posts.splice(0, 0, post.post);
                     });
-
+                    $scope.nearbyRefresh();
                     $scope.post.content = null;
                 })
             }, function (error) {
@@ -76,7 +85,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function ($scope, UserFactory) {
-    
+
     $scope.hideAllSignins = false;
     $scope.showSignupForm = false;
     $scope.showLoginForm = false;
