@@ -1,4 +1,4 @@
-<ion-view hide-nav-bar='true' view-title="Local Threads" ng-init="nearbyRefresh()">
+<ion-view hide-nav-bar="true" view-title="Local Threads" ng-init="nearbyRefresh()">
     <ion-content>
         <ion-refresher pulling-text="Pull down to refresh..." on-refresh="nearbyRefresh()">
         </ion-refresher>
@@ -9,10 +9,12 @@
                 <div class="item-body">{{post.content}}
                 </div>
                 <ul class="overlayRight">
-                    <li class = "button button-light button-small" ng-click = "vote(post.postid, true)"><i class = "icon ion-chevron-up"></i></li>
+                    <li class="button button-light button-small" ng-click="vote(post.postid, true)"><i class="icon ion-chevron-up"></i>
+                    </li>
                     <li>{{post.vote}}</li>
-                    <li class = "button button-light button-small" ng-click = "vote(post.postid, false)"><i class = "icon ion-chevron-down"></i></li>
-                </ul>    
+                    <li class="button button-light button-small" ng-click="vote(post.postid, false)"><i class="icon ion-chevron-down"></i>
+                    </li>
+                </ul>
             </ion-item>
         </ion-list>
     </ion-content>

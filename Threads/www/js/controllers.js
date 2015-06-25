@@ -33,7 +33,7 @@ angular.module('starter.controllers', [])
     $scope.nearbyPost = function () {
         if (AuthTokenFactory.getToken()) {
             navigator.geolocation.getCurrentPosition(function (position) {
-                UserFactory.getUser().then(function success (response) {
+                UserFactory.getUser().then(function success(response) {
                     console.log("latitude: ", position.coords.latitude);
                     console.log("longitude: ", position.coords.longitude);
                     console.log("content: ", $scope.post.content);
@@ -47,9 +47,9 @@ angular.module('starter.controllers', [])
                             "author": response.data.user
                         },
                         "token": AuthTokenFactory.getToken()
-                    }, function(post){
+                    }, function (post) {
                         post.post.timestamp = Date.now();
-                        $scope.posts.splice(0,0,post.post);
+                        $scope.posts.splice(0, 0, post.post);
                     });
 
                     $scope.post.content = null;
@@ -61,17 +61,17 @@ angular.module('starter.controllers', [])
             alert("You are not signed in. Posting requires that you sign in.");
         }
     }
-    
-    $scope.vote = function(postid, dirCondition){
+
+    $scope.vote = function (postid, dirCondition) {
         console.log("Vote function active on post: " + postid);
-        if(dirCondition){
+        if (dirCondition) {
             console.log("Upvoting");
             NearbyThreadsGetter.upvote(postid);
-        }else{
+        } else {
             console.log("Downvoting");
             NearbyThreadsGetter.downvote(postid);
         }
-       
+
     }
 })
 
@@ -107,9 +107,9 @@ angular.module('starter.controllers', [])
     }
 
     $scope.toggleInfo = function () {
-        if($scope.showInfo) {
+        if ($scope.showInfo) {
             $scope.showInfo = false;
-        }else {
+        } else {
             $scope.showInfo = true;
         }
     }
@@ -151,5 +151,4 @@ angular.module('starter.controllers', [])
         $scope.username = null;
         $scope.hideAllSignins = false;
     }
-
 });

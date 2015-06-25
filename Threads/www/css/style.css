@@ -1,12 +1,12 @@
 /* Empty. Add your own CSS if you like */
 
-.nearbyPostForm{
+.nearbyPostForm {
     position: absolute;
     bottom: 50px;
     width: 100%;
 }
 
-.overlayRight{
+.overlayRight {
     float: right;
     position: relative;
     top: 0px;
@@ -15,8 +15,7 @@
     margin: -40px;
 }
 
-.overlayRight li{
+.overlayRight li {
     display: inline;
     padding: 10px;
 }
-
