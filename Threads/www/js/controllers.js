@@ -76,19 +76,18 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function ($scope, UserFactory) {
+    
+    $scope.hideAllSignins = false;
+    $scope.showSignupForm = false;
+    $scope.showLoginForm = false;
+    $scope.showFBLogin = false;
+    $scope.showInfo = false;
     // initialization
     UserFactory.getUser().then(function success(response) {
         console.dir(response.data);
         $scope.user = response.data;
         $scope.hideAllSignins = true;
     });
-    $scope.hideAllSignins = false;
-    $scope.showSignupForm = false;
-    $scope.showLoginForm = false;
-    $scope.showFBLogin = false;
-    $scope.showInfo = false;
-
-
 
 
     $scope.toggleSignupForm = function () {
