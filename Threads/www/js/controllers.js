@@ -86,7 +86,6 @@ angular.module('starter.controllers', [])
     UserFactory.getUser().then(function success(response) {
         console.dir(response.data);
         $scope.user = response.data;
-        $scope.hideAllSignins = true;
     });
 
 
