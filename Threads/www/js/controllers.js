@@ -84,8 +84,9 @@ angular.module('starter.controllers', [])
     $scope.showInfo = false;
     // initialization
     UserFactory.getUser().then(function success(response) {
-        console.dir(response.data);
-        $scope.user = response.data;
+        console.dir(response.data.user);
+        $scope.user = response.data.user;
+        $scope.hideAllSignins = true;
     });
 
 
