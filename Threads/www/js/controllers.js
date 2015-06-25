@@ -10,14 +10,11 @@ angular.module('starter.controllers', [])
 
 .controller('NearbyThreadCtrl', function ($scope, NearbyThreadsGetter, AuthTokenFactory, UserFactory) {
     $scope.myOrderBy = function (post) {
-        console.log(post.timestamp);
         var myDate = new Date(post.timestamp);
-        console.log(myDate);
         var offset = myDate.getTimezoneOffset() * 1000;
-
         var withOffset = myDate.getTime();
-        console.log(withOffset);
-        return withOffset;
+        var arrayReturn = [withOffset, post.vote];
+        return arrayReturn;
     }
     $scope.nearbyRefresh = function () {
         navigator.geolocation.getCurrentPosition(function (position) {
