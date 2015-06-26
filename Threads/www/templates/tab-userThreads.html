@@ -4,10 +4,13 @@
         <input type="search" placeholder="Look For Threads!">
     </label>
 </ion-header-bar>
-<ion-view hide-nav-bar="true" view-title="User Threads">
+<ion-view hide-nav-bar="true" view-title="User Threads" ng-init = "getUserThreads()">
     <ion-content>
-        <ion-list>
-            
-        </ion-list>
+        <div class = "list card">
+            <a class = "item item-icon-right" ng-repeat = "thread in userThreads" href = "#/tab/uThread/{{thread.id}}">
+                {{thread.name}}
+                <i class = "icon ion-chevron-right"></i>
+            </a>
+        </div>
     </ion-content>
 </ion-view>

@@ -1,11 +1,32 @@
 angular.module('starter.controllers', [])
 
-.controller('UserThreadChatCtrl', function ($scope) {
-
+.controller('UserThreadChatCtrl', function ($scope, $stateParams, UserThreadsGetter, AuthTokenFactory, UserFactory) {
+    $scope.submitPost = function(post){
+        if (AuthTokenFactory.getToken()) {
+            UserFactory.getUser().then(function success(response) {
+                UserThreadsGetter.postToThread($stateParams.uThreadId,post, response.data.user);
+            });
+            $scope.post = null;
+        } else{
+            alert("You are not signed in. Viewing User Threads requires that you be signed in.")
+        } 
+    }
+    
+    $scope.getPosts = function(){
+        $scope.posts = UserThreadsGetter.getPosts($stateParams.uThreadId);
+    }
 })
 
-.controller('UserThreadCtrl', function ($scope, $stateParams) {
-
+.controller('UserThreadCtrl', function ($scope, UserThreadsGetter, UserFactory, AuthTokenFactory) {
+    $scope.getUserThreads = function () {
+        if (AuthTokenFactory.getToken()) {
+            UserFactory.getUser().then(function success(response) {
+                $scope.userThreads = UserThreadsGetter.getUserThreads(response.data.user);
+            });
+        } else{
+            alert("You are not signed in. Viewing User Threads requires that you be signed in.")
+        } 
+    }
 })
 
 .controller('NearbyThreadCtrl', function ($scope, NearbyThreadsGetter, AuthTokenFactory, UserFactory) {
