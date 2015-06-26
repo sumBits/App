@@ -94,6 +94,7 @@ angular.module('starter.controllers', [])
             console.log("Downvoting");
             NearbyThreadsGetter.downvote(postid);
         }
+        setTimeout(function(){ $scope.nearbyRefresh();}, 10);
 
     }
 })
