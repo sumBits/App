@@ -27,6 +27,6 @@
     width:100%;
 }
 
-ion-content {
+ion-content.local{
     margin-bottom: 53px;
 }
