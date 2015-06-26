@@ -9,9 +9,7 @@
     <description>
         A Location based app
     </description>
-    
-    <content src="Threads\index.html" />
-    
+        
     <access origin="*" />
     
     <prefercne name="permissions" value="false" />
@@ -47,8 +45,6 @@
         <splash src="Threads\resources\android\splash\drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi" />
     </platform>
     
-    <uses-permission android:name="android.permission.INTERNET"/>
-
     <icon src="Threads\resources\android\icon\drawable-xhdpi-icon.png" />
 
 </widget>
