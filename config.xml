@@ -12,7 +12,6 @@
         
     <access origin="*" />
     
-    <prefercne name="permissions" value="false" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
@@ -45,6 +44,6 @@
         <splash src="Threads\resources\android\splash\drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi" />
     </platform>
     
-    <icon src="Threads\resources\android\icon\drawable-xhdpi-icon.png" />
+    <icon src="Threads\resources\icon.png" />
 
 </widget>
