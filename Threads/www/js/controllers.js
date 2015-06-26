@@ -94,7 +94,9 @@ angular.module('starter.controllers', [])
             console.log("Downvoting");
             NearbyThreadsGetter.downvote(postid);
         }
-        setTimeout(function(){ $scope.nearbyRefresh();}, 10);
+        setTimeout(function () {
+            $scope.nearbyRefresh();
+        }, 10);
 
     }
 })
@@ -148,6 +150,7 @@ angular.module('starter.controllers', [])
             $scope.signup.pwd = null;
             console.log(response);
             $scope.login(em, pwd);
+
         }, function handleError(response) {
             alert('Error: ' + response.data);
         });

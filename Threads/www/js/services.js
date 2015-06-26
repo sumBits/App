@@ -105,13 +105,19 @@ angular.module('starter.services', [], function config($httpProvider) {
     }
 
     function upvote(id) {
-        return $http.post(API_URL + '/upvote', {headers: 'application/json', data: id}).then(function success(response) {
+        return $http.post(API_URL + '/upvote', {
+            headers: 'application/json',
+            data: id
+        }).then(function success(response) {
             console.log("Upvote Successful")
         });
     }
 
     function downvote(id) {
-        return $http.post(API_URL + '/downvote', {headers: 'application/json', data: id}).then(function success(response) {
+        return $http.post(API_URL + '/downvote', {
+            headers: 'application/json',
+            data: id
+        }).then(function success(response) {
             console.log("Downvote Successful")
         });
     }
