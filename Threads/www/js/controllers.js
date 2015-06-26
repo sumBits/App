@@ -24,11 +24,11 @@ angular.module('starter.controllers', [])
 
     $scope.topSortToggle = function () {
         $scope.votesortime = true;
-        $scope.apply();
+        $scope.apply;
     }
     $scope.recentSortToggle = function () {
         $scope.votesortime = false;
-        $scope.apply();
+        $scope.apply;
     }
     $scope.nearbyRefresh = function () {
         navigator.geolocation.getCurrentPosition(function (position) {

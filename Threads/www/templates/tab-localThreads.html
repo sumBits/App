@@ -1,10 +1,12 @@
 <ion-header-bar class="item-input-inset bar-assertive">
-    <button class="button button-positive" ng-click="recentSortToggle()">
-        Recent
-    </button>
-    <button class="button button-positive" ng-click="topSortToggle()">
-        Top
-    </button>
+    <div class="button-bar">
+        <button class="button button-positive" ng-click="recentSortToggle()">
+            Recent
+        </button>
+        <button class="button button-positive" ng-click="topSortToggle()">
+            Top
+        </button>
+    </div>
 </ion-header-bar>
 <ion-view hide-nav-bar="true" view-title="Local Threads" ng-init="nearbyRefresh()">
     <ion-content>
