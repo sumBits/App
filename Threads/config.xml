@@ -55,12 +55,6 @@
         android:largeScreens="false" 
         android:smallScreens="true" />
     </gap:config-file>
-    <manifest>
-    <permission android:description="WIFI"
-            android:label="WIFI"
-            android:name="com.sumBits.threads.ACCESS_FINE_LOCATION"
-            android:permissionGroup="ACCESS_FINE_LOCATION"
-            android:protectionLevel="normal"/>
-    </manifest>
+    <preference name="permissions"                value="none"/>
 
 </widget>
