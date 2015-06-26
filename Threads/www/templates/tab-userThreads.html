@@ -8,7 +8,8 @@
     <ion-content>
         <div class = "list card">
             <a class = "item item-icon-right" ng-repeat = "thread in userThreads" href = "#/tab/uThread/{{thread.id}}">
-                {{thread.name}}
+                <b>{{thread.name}}</b> {{thread.author}}<b>&middot;{{thread.timestamp | date:'MMM dd - hh:mm a'}}</b>
+                <div class = "list card">{{thread.description}}</div>
                 <i class = "icon ion-chevron-right"></i>
             </a>
         </div>
