@@ -15,15 +15,17 @@
 
         <ion-list>
             <ion-item id="item" ng-repeat="post in posts | orderBy: myOrderBy:true">
-                <div class="item item-divider"><b>{{post.author}}</b> - {{post.timestamp | date:'MMM dd - hh:mm a'}}</div>
-                <div class="item-body">{{post.content}}</div>
-                <ul class="overlayRight">
-                    <li class="button button-light button-small button-clear" ng-click="vote(post.postid, true)"><i class="icon ion-chevron-up"></i>
-                    </li>
-                    <li>{{post.vote}}</li>
-                    <li class="button button-light button-small button-clear" ng-click="vote(post.postid, false)"><i class="icon ion-chevron-down"></i>
-                    </li>
-                </ul>
+                <div class="item"><b>{{post.author}}</b>&middot;{{post.timestamp | date:'MMM dd - hh:mm a'}}</div>
+                <div class="item-postcontent">
+                    <div class="item-body">{{post.content}}</div>
+                    <ul class="overlayRight">
+                        <li class="button button-light button-small button-clear" ng-click="vote(post.postid, true)"><i class="icon ion-chevron-up"></i>
+                        </li>
+                        <li>{{post.vote}}</li>
+                        <li class="button button-light button-small button-clear" ng-click="vote(post.postid, false)"><i class="icon ion-chevron-down"></i>
+                        </li>
+                    </ul>
+                </div>
             </ion-item>
         </ion-list>
     </ion-content>
