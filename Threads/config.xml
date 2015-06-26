@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:andriod  = "http://schemas.android.com/apk/res/android"
         id          = "com.sumBits.Threads"
@@ -15,6 +14,7 @@
     
     <access origin="*" />
     
+    <preference name='phonegap-version' value='cli-5.1.1' />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
