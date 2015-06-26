@@ -56,10 +56,4 @@
         android:smallScreens="true" />
     </gap:config-file>
     
-    <!-- app debugging can be ignored to use install weinre-->
-    <feature name="debug-server" required="true">
-        <param name="domain" value="http://10.0.0.14:8080"/>
-        <param name="key" value="com.sumBits.Threads"/>
-    </feature>
-
 </widget>
