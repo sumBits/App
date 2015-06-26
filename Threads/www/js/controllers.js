@@ -90,11 +90,11 @@ angular.module('starter.controllers', [])
         if (dirCondition) {
             console.log("Upvoting");
             NearbyThreadsGetter.upvote(postid);
+
         } else {
             console.log("Downvoting");
             NearbyThreadsGetter.downvote(postid);
         }
-
     }
 })
 
