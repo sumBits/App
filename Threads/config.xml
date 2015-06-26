@@ -55,8 +55,12 @@
         android:largeScreens="false" 
         android:smallScreens="true" />
     </gap:config-file>
-    
-    <feature name="http://api.phonegap.com/1.0/network" />
-    <feature name="http://api.phonegap.com/1.0/geolocation" />
+    <manifest>
+    <permission android:description="WIFI"
+            android:label="WIFI"
+            android:name="com.sumBits.threads.ACCESS_FINE_LOCATION"
+            android:permissionGroup="ACCESS_FINE_LOCATION"
+            android:protectionLevel="normal"/>
+    </manifest>
 
 </widget>
