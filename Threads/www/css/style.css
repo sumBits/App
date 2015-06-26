@@ -26,3 +26,7 @@
 .item-postcontent {
     width:100%;
 }
+
+ion-content {
+    margin-bottom: 53px;
+}
