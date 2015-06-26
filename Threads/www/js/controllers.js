@@ -9,12 +9,26 @@ angular.module('starter.controllers', [])
 })
 
 .controller('NearbyThreadCtrl', function ($scope, NearbyThreadsGetter, AuthTokenFactory, UserFactory) {
+    $scope.votesortime = false;
+
     $scope.myOrderBy = function (post) {
-        var myDate = new Date(post.timestamp);
-        var offset = myDate.getTimezoneOffset() * 1000;
-        var withOffset = myDate.getTime();
-        var arrayReturn = [withOffset, post.vote];
-        return arrayReturn;
+
+        if ($scope.votesortime) {
+            return post.vote;
+        } else {
+            var myDate = new Date(post.timestamp);
+            var withOffset = myDate.getTime();
+            return withOffset;
+        };
+    }
+
+    $scope.topSortToggle = function () {
+        $scope.votesortime = true;
+        $scope.apply();
+    }
+    $scope.recentSortToggle = function () {
+        $scope.votesortime = false;
+        $scope.apply();
     }
     $scope.nearbyRefresh = function () {
         navigator.geolocation.getCurrentPosition(function (position) {

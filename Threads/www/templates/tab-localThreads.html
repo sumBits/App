@@ -1,10 +1,18 @@
+<ion-header-bar class="item-input-inset bar-assertive">
+    <button class="button button-positive" ng-click="recentSortToggle()">
+        Recent
+    </button>
+    <button class="button button-positive" ng-click="topSortToggle()">
+        Top
+    </button>
+</ion-header-bar>
 <ion-view hide-nav-bar="true" view-title="Local Threads" ng-init="nearbyRefresh()">
     <ion-content>
         <ion-refresher pulling-text="Pull down to refresh..." on-refresh="nearbyRefresh()">
         </ion-refresher>
 
         <ion-list>
-            <ion-item ng-repeat="post in posts | orderBy: myOrderBy:true" >
+            <ion-item id="item" ng-repeat="post in posts | orderBy: myOrderBy:true">
                 <div class="item item-divider"><b>{{post.author}}</b> - {{post.timestamp | date:'MMM dd - hh:mm a'}}</div>
                 <div class="item-body">{{}}{{post.content}}</div>
                 <ul class="overlayRight">
@@ -16,7 +24,7 @@
                 </ul>
             </ion-item>
         </ion-list>
-    </ion-content>
+    </ion-content>d
     <form class="nearbyPostForm">
         <div class="item item-input-inset">
             <label class="item-input-wrapper">
