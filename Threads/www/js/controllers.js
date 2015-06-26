@@ -10,6 +10,7 @@ angular.module('starter.controllers', [])
 
 .controller('NearbyThreadCtrl', function ($scope, NearbyThreadsGetter, AuthTokenFactory, UserFactory) {
     $scope.votesortime = false;
+    $scope.activeButton = 2;
 
     $scope.myOrderBy = function (post) {
 
@@ -24,10 +25,12 @@ angular.module('starter.controllers', [])
 
     $scope.topSortToggle = function () {
         $scope.votesortime = true;
+        $scope.activeButton = 1;
         $scope.apply;
     }
     $scope.recentSortToggle = function () {
         $scope.votesortime = false;
+        $scope.activeButton = 2;
         $scope.apply;
     }
     $scope.nearbyRefresh = function () {
