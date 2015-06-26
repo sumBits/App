@@ -95,34 +95,37 @@ angular.module('starter.services', [], function config($httpProvider) {
         getPosts: getPosts
     };
 
-    function getUserThreads(user) {
+    function getUserThreads(user, next) {
         console.log("Getting User Threads on the front end for user: " + user);
-        var testData = [{
-            name: "hello",
-            id: "1"
-        }, {
-            name: "one",
-            id: "2"
-        }, {
-            name: "two",
-            id: "3"
-        }];
 
-        return $http.post(API_URL + '/getUserThreads', {
+
+        $http.post(API_URL + '/getUserThreads', {
             data: user
         }).then(function success(response) {
-            console.log("User Thread retrieval successful.")
-            if (response.data == null) {
-                return testData;
+            console.log("User Thread retrieval successful.");
+            if (response.data == "nothing") {
+                var testData = [{
+                    name: "AP Calculus BC",
+                    id: "1"
+            }, {
+                    name: "AP Physics C",
+                    id: "2"
+            }, {
+                    name: "Best Marvel Movies",
+                    id: "3"
+                }];
+                console.log("Got no threads from server, returning test data.");
+                next(testData);
             } else {
-                return response.data;
+                next(response.data);
             }
+
         });
     }
 
     var testPosts = [];
 
-    function getPosts(threadId) {
+    function getPosts(threadId, next) {
         console.log("Getting posts in the thread with id: " + threadId);
         testPosts = [{
             author: "Anirudh",
@@ -132,14 +135,14 @@ angular.module('starter.services', [], function config($httpProvider) {
             content: "What's up?"
         }];
 
-        return $http.post(API_URL + '/getPostsInUThread', {
+        $http.post(API_URL + '/getPostsInUThread', {
             data: threadId
         }).then(function success(response) {
             console.log("Posts in User Thread retrieval successful.")
-            if (response.data != null) {
-                return response.data;
+            if (response.data != "nothing") {
+                next(response.data);
             } else {
-                return testPosts;
+                next(testPosts);
             }
         });
     }
@@ -154,10 +157,11 @@ angular.module('starter.services', [], function config($httpProvider) {
         } else {
             console.log("Front end is attempting to post into this user thread: " + threadId);
             post.author = user;
+            post.threadId = threadId;
             return $http.post(API_URL + '/postToUThread', {
                 data: post
             }).then(function success(response) {
-                console.log("Posted in User Thread successfully.")
+                console.log("Posting was successful.");
             });
 
         }
