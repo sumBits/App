@@ -49,12 +49,5 @@
     </platform>
     
     <icon src="resources\android\icon\drawable-xhdpi-icon.png" />
-    
-    <gap:config-file platform="android" parent="/manifest" mode="merge">
-    <supports-screens 
-        android:xlargeScreens="false" 
-        android:largeScreens="false" 
-        android:smallScreens="true" />
-    </gap:config-file>
-    
+
 </widget>
