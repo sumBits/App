@@ -6,11 +6,10 @@
 </ion-header-bar>
 <ion-view hide-nav-bar="true" view-title="User Threads" ng-init="getUserThreads()">
     <ion-content>
-        <div class="list card">
-            <a class="item item-icon-right" ng-repeat="thread in userThreads" href="#/tab/uThread/{{thread.id}}">
-                <b>{{thread.name}}</b> {{thread.author}}<b>&middot;{{thread.timestamp | date:'MMM dd - hh:mm a'}}</b>
-                <div>{{thread.description}}</div>
-                <i class="icon ion-chevron-right"></i>
+        <div class = "list card">
+            <a class = "item item-icon-right" ng-repeat = "thread in userThreads" href = "#/tab/uThread/{{thread.thread_id}}">
+                {{thread.threadName}}
+                <i class = "icon ion-chevron-right"></i>
             </a>
         </div>
     </ion-content>

@@ -1,19 +1,26 @@
 angular.module('starter.controllers', [])
 
 .controller('UserThreadChatCtrl', function ($scope, $stateParams, UserThreadsGetter, AuthTokenFactory, UserFactory) {
+    var username;
     $scope.submitPost = function(post){
         if (AuthTokenFactory.getToken()) {
             UserFactory.getUser().then(function success(response) {
-                UserThreadsGetter.postToThread($stateParams.uThreadId,post, response.data.user);
+                UserThreadsGetter.postToThread($stateParams.uThreadId,post, username).then(function success(response){
+                    $scope.getPosts();
+                });
             });
             $scope.post = null;
         } else{
-            alert("You are not signed in. Viewing User Threads requires that you be signed in.")
+            alert("You are not signed in. Posting to User Threads requires that you be signed in.")
         } 
     }
     
     $scope.getPosts = function(){
-        $scope.posts = UserThreadsGetter.getPosts($stateParams.uThreadId);
+        UserThreadsGetter.getPosts($stateParams.uThreadId, function(data){
+            $scope.posts = data;
+            username = $scope.posts[0].author;
+            console.log("USN IS " + username);
+        });
     }
 })
 
@@ -21,7 +28,9 @@ angular.module('starter.controllers', [])
     $scope.getUserThreads = function () {
         if (AuthTokenFactory.getToken()) {
             UserFactory.getUser().then(function success(response) {
-                $scope.userThreads = UserThreadsGetter.getUserThreads(response.data.user);
+                UserThreadsGetter.getUserThreads(response.data.user, function(data){
+                    $scope.userThreads = data;    
+                });
             });
         } else{
             alert("You are not signed in. Viewing User Threads requires that you be signed in.")
