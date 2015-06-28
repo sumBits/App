@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
     }
     $scope.userPost = function () {
         var myPopup = $ionicPopup.show({
-            template: '<input type="text" ng-model="data.text">',
+            template: '<input type="text" ng-model="title.text">',
             title: 'Enter title of your Thread!',
             subTitle: 'Read the rules before creating a new Thread!',
             scope: $scope,
@@ -50,16 +50,26 @@ angular.module('starter.controllers', [])
                     text: '<b>Create!</b>',
                     type: 'button-positive',
                     onTap: function (e) {
-                        if (!$scope.data.text) {
+                        if (!$scope.title.text) {
                             //don't allow the user to close unless he enters wifi password
                             e.preventDefault();
                         } else {
-                            return $scope.data.text;
+                            return $scope.title.text;
                         }
                     }
       }
     ]
         });
+        
+    var rn1 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
+    var rn2 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
+    var rn3 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
+    var rn4 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
+    var rn5 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
+    
+        Math.round(rn1, rn2, rn3, rn4, rn5);
+        var GenID = String.fromCharCode(rn1, rn2, rn3, rn4, rn5);
+        
     }
 })
 

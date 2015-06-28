@@ -152,19 +152,15 @@ angular.module('starter.services', [], function config($httpProvider) {
     }
 
     function postToThread(threadId, post, user) {
-        if (post == null) {
-            alert("Please enter something to post.");
-        } else {
-            console.log("Front end is attempting to post into this user thread: " + threadId);
-            post.author = user;
-            post.threadId = threadId;
-            return $http.post(API_URL + '/postToUThread', {
-                data: post
-            }).then(function success(response) {
-                console.log("Posting was successful.");
-            });
-
-        }
+        console.log("Front end is attempting to post into this user thread: " + threadId);
+        post.author = user;
+        post.threadId = threadId;
+        post.title = title;
+        return $http.post(API_URL + '/postToUThread', {
+            data: post
+        }).then(function success(response) {
+            console.log("Posting was successful.");
+        });
     }
 
     return factory;
