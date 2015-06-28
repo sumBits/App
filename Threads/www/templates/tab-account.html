@@ -2,7 +2,7 @@
     <ion-content>
         <div ng-hide="hideAllSignins">
             <!--button to go to signup form-->
-            <button class="button button-block button-positive" ng-click="toggleSignupForm()">
+            <button class="button button-block button-dark" ng-click="toggleSignupForm()">
                 Create new Account with email
             </button>
 
@@ -29,7 +29,7 @@
 
 
             <!--button to go to Login form-->
-            <button class="button button-block button-positive" ng-click="toggleLoginForm()">
+            <button class="button button-block button-dark" ng-click="toggleLoginForm()">
                 Login to existing account
             </button>
 
@@ -48,7 +48,7 @@
 
 
             <!--This is the facebook login-->
-            <button class="button button-block button-positive" ng-click="toggleFBLogin()">
+            <button class="button button-block button-dark" ng-click="toggleFBLogin()">
                 <i class="icon ion-social-facebook-outline"></i> &nbsp;Login with Facebook
             </button>
 
@@ -66,30 +66,32 @@
             </form>
             <!-- EULA Privacy Policy and other information -->
 
-            <button class="button button-block button-positive" ng-click="toggleInfo()">
-                &nbsp;App Info
-            </button>
-            <div style="margin: 0px 20px 0px 20px" ng-show="showInfo">
-                <div>
-                    <a class="item item-icon-left positive" href="#/tab/eula">
-                        <i class="icon ion-ios7-arrow-forward"></i> EULA
-                    </a>
-                </div>
-                <div>
-                    <a class="item item-icon-left positive" href="#/tab/privacy">
-                        <i class="icon ion-ios7-arrow-forward"></i> Privacy Policy
-                    </a>
-                </div>
-
-            </div>
+            
 
         </div>
+        
 
         <div ng-show="hideAllSignins">
             <ion-header-bar class="item-input-inset bar-assertive">
                 <div>You are logged in as {{user}}</div>
             </ion-header-bar>
-            <button class="button button-block button-positive" ng-click="logout()">Logout</button>
+            <button class="button button-block button-dark" ng-click="logout()">Logout</button>
+        </div>
+        <button class="button button-block button-dark" ng-click="toggleInfo()">
+                &nbsp;App Info
+            </button>
+        <div style="margin: 0px 20px 0px 20px" ng-show="showInfo">
+            <div>
+                <a class="item item-icon-left dark" href="#/tab/eula">
+                    <i class="icon ion-ios7-arrow-forward"></i> EULA
+                </a>
+            </div>
+            <div>
+                <a class="item item-icon-left dark" href="#/tab/privacy">
+                    <i class="icon ion-ios7-arrow-forward"></i> Privacy Policy
+                </a>
+            </div>
+
         </div>
     </ion-content>
 </ion-view>
