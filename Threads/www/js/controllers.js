@@ -68,8 +68,7 @@ angular.module('starter.controllers', [])
     var rn5 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
     
         Math.round(rn1, rn2, rn3, rn4, rn5);
-        var GenID = String.fromCharCode(rn1, rn2, rn3, rn4, rn5);
-        
+        var GenID = String.fromCharCode(rn1, rn2, rn3, rn4, rn5)
     }
 })
 
