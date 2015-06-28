@@ -2,21 +2,21 @@ angular.module('starter.controllers', [])
 
 .controller('UserThreadChatCtrl', function ($scope, $stateParams, UserThreadsGetter, AuthTokenFactory, UserFactory) {
     var username;
-    $scope.submitPost = function(post){
+    $scope.submitPost = function (post) {
         if (AuthTokenFactory.getToken()) {
             UserFactory.getUser().then(function success(response) {
-                UserThreadsGetter.postToThread($stateParams.uThreadId,post, username).then(function success(response){
+                UserThreadsGetter.postToThread($stateParams.uThreadId, post, username).then(function success(response) {
                     $scope.getPosts();
                 });
             });
             $scope.post = null;
-        } else{
+        } else {
             alert("You are not signed in. Posting to User Threads requires that you be signed in.")
-        } 
+        }
     }
-    
-    $scope.getPosts = function(){
-        UserThreadsGetter.getPosts($stateParams.uThreadId, function(data){
+
+    $scope.getPosts = function () {
+        UserThreadsGetter.getPosts($stateParams.uThreadId, function (data) {
             $scope.posts = data;
             username = $scope.posts[0].author;
             console.log("USN IS " + username);
@@ -24,17 +24,42 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('UserThreadCtrl', function ($scope, UserThreadsGetter, UserFactory, AuthTokenFactory) {
+.controller('UserThreadCtrl', function ($scope, $timeout, $ionicPopup, UserThreadsGetter, UserFactory, AuthTokenFactory) {
     $scope.getUserThreads = function () {
         if (AuthTokenFactory.getToken()) {
             UserFactory.getUser().then(function success(response) {
-                UserThreadsGetter.getUserThreads(response.data.user, function(data){
-                    $scope.userThreads = data;    
+                UserThreadsGetter.getUserThreads(response.data.user, function (data) {
+                    $scope.userThreads = data;
                 });
             });
-        } else{
+        } else {
             alert("You are not signed in. Viewing User Threads requires that you be signed in.")
-        } 
+        }
+    }
+    $scope.userPost = function () {
+        var myPopup = $ionicPopup.show({
+            template: '<input type="text" ng-model="data.text">',
+            title: 'Enter title of your Thread!',
+            subTitle: 'Read the rules before creating a new Thread!',
+            scope: $scope,
+            buttons: [
+                {
+                    text: 'Cancel'
+                },
+                {
+                    text: '<b>Create!</b>',
+                    type: 'button-positive',
+                    onTap: function (e) {
+                        if (!$scope.data.text) {
+                            //don't allow the user to close unless he enters wifi password
+                            e.preventDefault();
+                        } else {
+                            return $scope.data.text;
+                        }
+                    }
+      }
+    ]
+        });
     }
 })
 
@@ -128,7 +153,7 @@ angular.module('starter.controllers', [])
             $scope.nearbyRefresh();
         }, 10);
 
-    }
+    };
 })
 
 .controller('AccountCtrl', function ($scope, UserFactory) {
