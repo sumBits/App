@@ -1,0 +1,32 @@
+/* Empty. Add your own CSS if you like */
+
+.postForm {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+}
+
+.overlayRight {
+    float: right;
+    position: relative;
+    top: 0px;
+/*
+    left: -40px;
+    padding: 0px;
+    margin: -40px;
+*/
+    width: 100px;
+}
+
+.overlayRight li {
+    display: inline;
+    padding: 10px;
+}
+
+.item-postcontent {
+    width:100%;
+}
+
+ion-content.local{
+    margin-bottom: 53px;
+}

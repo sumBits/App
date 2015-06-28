@@ -1,0 +1,97 @@
+<ion-view hide-nav-bar='true'>
+    <ion-content>
+        <div ng-hide="hideAllSignins">
+            <!--button to go to signup form-->
+            <button class="button button-block button-dark" ng-click="toggleSignupForm()">
+                Create new Account with email
+            </button>
+
+
+            <form name="newAccount" class="list Form" ng-show="showSignupForm">
+                <label class="item item-input">
+                    <span class="input-label">Username:</span>
+                    <input type="text" ng-model="signup.usn" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Age:</span>
+                    <input type="number" ng-model="signup.age" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Email:</span>
+                    <input type="email" ng-model="signup.em" min="13" max="100" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password:</span>
+                    <input type="password" ng-model="signup.pwd" required>
+                </label>
+                <button class="button button-block button-assertive" ng-click="signup(signup.usn,singup.age,signup.em,signup.pwd)" ng-disabled="newAccount.$invalid">Sign Up!</button>
+            </form>
+
+
+            <!--button to go to Login form-->
+            <button class="button button-block button-dark" ng-click="toggleLoginForm()">
+                Login to existing account
+            </button>
+
+
+            <form name="loginForm" class="list Form" ng-show="showLoginForm">
+                <label class="item item-input">
+                    <span class="input-label">Email:</span>
+                    <input type="email" ng-model="login.em" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password:</span>
+                    <input type="password" ng-model="login.pwd" required>
+                </label>
+                <button class="button button-block button-assertive" ng-click="login(login.em,login.pwd)" ng-disabled="loginForm.$invalid">Login!</button>
+            </form>
+
+
+            <!--This is the facebook login-->
+            <button class="button button-block button-dark" ng-click="toggleFBLogin()">
+                <i class="icon ion-social-facebook-outline"></i> &nbsp;Login with Facebook
+            </button>
+
+
+            <form name="FBLoginForm" class="list Form" ng-show="showFBLogin">
+                <label class="item item-input">
+                    <span class="input-label">Email:</span>
+                    <input type="email" ng-model="FB.em" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password:</span>
+                    <input type="password" ng-model="FB.pwd" required>
+                </label>
+                <button class="button button-block button-assertive" ng-click="FBLogin(FB.em,FB.pwd)" ng-disabled="FBLoginForm.$invalid">Login!</button>
+            </form>
+            <!-- EULA Privacy Policy and other information -->
+
+            
+
+        </div>
+        
+
+        <div ng-show="hideAllSignins">
+            <ion-header-bar class="item-input-inset bar-assertive">
+                <div>You are logged in as {{user}}</div>
+            </ion-header-bar>
+            <button class="button button-block button-dark" ng-click="logout()">Logout</button>
+        </div>
+        <button class="button button-block button-dark" ng-click="toggleInfo()">
+                &nbsp;App Info
+            </button>
+        <div style="margin: 0px 20px 0px 20px" ng-show="showInfo">
+            <div>
+                <a class="item item-icon-left dark" href="#/tab/eula">
+                    <i class="icon ion-ios7-arrow-forward"></i> EULA
+                </a>
+            </div>
+            <div>
+                <a class="item item-icon-left dark" href="#/tab/privacy">
+                    <i class="icon ion-ios7-arrow-forward"></i> Privacy Policy
+                </a>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

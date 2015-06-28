@@ -1,0 +1,40 @@
+<ion-header-bar class="item-input-inset bar-assertive">
+    <div class="button-bar">
+        <button class="button button-dark" ng-class="{'active' : activeButton == 2}" ng-click="recentSortToggle()">
+            Recent
+        </button>
+        <button class="button button-dark" ng-class="{'active' : activeButton == 1}" ng-click="topSortToggle()">
+            Top
+        </button>
+    </div>
+</ion-header-bar>
+<ion-view hide-nav-bar="true" view-title="Local Threads" ng-init="nearbyRefresh()">
+    <ion-content class="local">
+        <ion-refresher pulling-text="Pull down to refresh..." on-refresh="nearbyRefresh()">
+        </ion-refresher>
+
+        <ion-list>
+            <ion-item id="item" ng-repeat="post in posts | orderBy: myOrderBy:true">
+                <div class="item"><b>{{post.author}}</b>&middot;{{post.timestamp | date:'MMM dd - hh:mm a'}}</div>
+                <div class="item-postcontent">
+                    <div class="item-body">{{post.content}}</div>
+                    <ul class="overlayRight">
+                        <li class="button button-light button-small button-clear" ng-click="vote(post.postid, true)"><i class="icon ion-chevron-up"></i>
+                        </li>
+                        <li>{{post.vote}}</li>
+                        <li class="button button-light button-small button-clear" ng-click="vote(post.postid, false)"><i class="icon ion-chevron-down"></i>
+                        </li>
+                    </ul>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <form class="postForm">
+        <div class="item item-input-inset">
+            <label class="item-input-wrapper">
+                <input type="text" placeholder="Type something here..." maxlength="140" ng-model="post.content">
+            </label>
+            <button class="button button-small" ng-click="nearbyPost()">Post</button>
+        </div>
+    </form>
+</ion-view>
