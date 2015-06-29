@@ -50,7 +50,7 @@ angular.module('starter.controllers', [])
                 },
                 {
                     text: '<b>Create!</b>',
-                    type: 'button-positive',
+                    type: 'button-dark',
                     onTap: function (e) {
                         if (!$scope.newthreaddata.title) {
                             e.preventDefault();
@@ -93,7 +93,7 @@ angular.module('starter.controllers', [])
                 },
                 {
                     text: '<b>Subscribe!</b>',
-                    type: 'button-positive',
+                    type: 'button-dark',
                     onTap: function (e) {
                         console.log($scope.iddata.threadSubID);
                         if (!$scope.iddata.threadSubID) {
