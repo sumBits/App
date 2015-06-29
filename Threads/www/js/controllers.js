@@ -55,11 +55,11 @@ angular.module('starter.controllers', [])
                         if (!$scope.newthreaddata.title) {
                             e.preventDefault();
                         } else {
-                            var rn1 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
-                            var rn2 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
-                            var rn3 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
-                            var rn4 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
-                            var rn5 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
+                            var rn1 = Math.floor(Math.random() * (90 - 65 + 1)) + 65;
+                            var rn2 = Math.floor(Math.random() * (90 - 65 + 1)) + 65;
+                            var rn3 = Math.floor(Math.random() * (90 - 65 + 1)) + 65;
+                            var rn4 = Math.floor(Math.random() * (90 - 65 + 1)) + 65;
+                            var rn5 = Math.floor(Math.random() * (90 - 65 + 1)) + 65;
                             
                             Math.round(rn1, rn2, rn3, rn4, rn5);
                             var GenID = String.fromCharCode(rn1, rn2, rn3, rn4, rn5);
