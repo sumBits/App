@@ -1,0 +1,19 @@
+<ion-view view-title="{{threadName}}" ng-init = "getPosts()">
+    <ion-content class="padding">
+        <div class = "list">
+            <div class = "item" ng-repeat = "post in posts">
+                <b>{{post.author}}: </b>{{post.content}}
+            </div>
+        </div>
+    </ion-content>
+    <form class = "postForm">
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input type="text" placeholder="Type something here..." maxlength="140" ng-model="post.content">
+                </label>
+                <button class="button button-small" ng-click="submitPost(post)">
+                    Post
+                </button>
+            </div>
+        </form>
+</ion-view>
