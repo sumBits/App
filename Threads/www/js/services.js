@@ -90,9 +90,11 @@ angular.module('starter.services', [], function config($httpProvider) {
 .factory('UserThreadsGetter', function UserThreadsGetter($http, API_URL) {
     var factory = {
         getUserThreads: getUserThreads,
+        getUserThreadsUpdated: getUserThreadsUpdated,
         joinThread: joinThread,
         postToThread: postToThread,
-        getPosts: getPosts
+        getPosts: getPosts,
+        createUThread, createUThread
     };
 
     function getUserThreads(user, next) {
@@ -123,6 +125,32 @@ angular.module('starter.services', [], function config($httpProvider) {
         });
     }
 
+    function getUserThreadsUpdated(user, next) {
+        console.log("Getting User Threads on the front end for user: " + user);
+
+        $http.post(API_URL + '/getUserThreadsUpdated', {
+            data: user
+        }).then(function success(response) {
+            console.log("User Thread retrieval successful.");
+            if (response.data == "nothing") {
+                var testData = [{
+                    name: "AP Calculus BC",
+                    id: "1"
+            }, {
+                    name: "AP Physics C",
+                    id: "2"
+            }, {
+                    name: "Best Marvel Movies",
+                    id: "3"
+                }];
+                console.log("Got no threads from server, returning test data.");
+                next(testData);
+            } else {
+                next(response.data);
+            }
+        });
+    }
+
     var testPosts = [];
 
     function getPosts(threadId, next) {
@@ -147,8 +175,43 @@ angular.module('starter.services', [], function config($httpProvider) {
         });
     }
 
-    function joinThread(threadId, user) {
-        console.log(user + " is joining thread with id: " + threadId + " on the front end.");
+    function getPostsUpdtaed(threadGenId, next) {
+        console.log("Getting posts in the thread with id: " + threadGenId);
+        testPosts = [{
+            author: "Anirudh",
+            content: "Hi guys"
+        }, {
+            author: "Spencer",
+            content: "What's up?"
+        }];
+
+        $http.post(API_URL + '/getPostsInUThread', {
+            data: threadGenId
+        }).then(function success(response) {
+            console.log("Posts in User Thread retrieval successful.")
+            if (response.data != "nothing") {
+                next(response.data);
+            } else {
+                next(testPosts);
+            }
+        });
+    }
+
+    function joinThread(s_user, s_threadId) {
+        console.log(s_user + " is joining thread with id: " + s_threadId + " on the front end.");
+        $http.post(API_URL + '/joinUThread', {
+            user: s_user,
+            genId: s_threadId
+        });
+    }
+
+    function createUThread(s_title, s_threadId) {
+        console.log(s_title + ", " + s_threadId);
+        
+        $http.post(API_URL + "/createUThread", {
+            threadTitle: s_title,
+            threadGenId: s_threadId
+        })
     }
 
     function postToThread(threadId, post, user) {

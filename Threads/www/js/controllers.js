@@ -28,7 +28,7 @@ angular.module('starter.controllers', [])
     $scope.getUserThreads = function () {
         if (AuthTokenFactory.getToken()) {
             UserFactory.getUser().then(function success(response) {
-                UserThreadsGetter.getUserThreads(response.data.user, function (data) {
+                UserThreadsGetter.getUserThreadsUpdated(response.data.user, function (data) {
                     $scope.userThreads = data;
                 });
             });
@@ -37,8 +37,10 @@ angular.module('starter.controllers', [])
         }
     }
     $scope.userPost = function () {
+        $scope.newthreaddata = {};
+
         var myPopup = $ionicPopup.show({
-            template: '<input type="text" ng-model="title.text">',
+            template: '<input type="text" ng-model="newthreaddata.title">',
             title: 'Enter title of your Thread!',
             subTitle: 'Read the rules before creating a new Thread!',
             scope: $scope,
@@ -50,25 +52,65 @@ angular.module('starter.controllers', [])
                     text: '<b>Create!</b>',
                     type: 'button-positive',
                     onTap: function (e) {
-                        if (!$scope.title.text) {
-                            //don't allow the user to close unless he enters wifi password
+                        if (!$scope.newthreaddata.title) {
                             e.preventDefault();
                         } else {
-                            return $scope.title.text;
+                            var rn1 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
+                            var rn2 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
+                            var rn3 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
+                            var rn4 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
+                            var rn5 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
+                            
+                            Math.round(rn1, rn2, rn3, rn4, rn5);
+                            var GenID = String.fromCharCode(rn1, rn2, rn3, rn4, rn5);
+
+                            console.log("Gen id: " + GenID);
+                            console.log("Title: " + $scope.newthreaddata.title);
+                            UserThreadsGetter.createUThread($scope.newthreaddata.title, GenID);
+                            UserFactory.getUser().then(function success(response) {
+                                console.log("User: " + response.data.user);
+                                console.log("ID: " + GenID);
+                                UserThreadsGetter.joinThread(response.data.user,GenID);
+                            });
                         }
                     }
-      }
-    ]
+                }
+            ]
         });
-        
-    var rn1 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
-    var rn2 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
-    var rn3 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
-    var rn4 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
-    var rn5 = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
-    
-        Math.round(rn1, rn2, rn3, rn4, rn5);
-        var GenID = String.fromCharCode(rn1, rn2, rn3, rn4, rn5)
+    }
+
+    $scope.subscribe = function() {
+        $scope.iddata = {};
+
+        var subscribePopup = $ionicPopup.show({
+            template: '<input type="text" ng-model="iddata.threadSubID">',
+            title: 'Enter ID for your thread!',
+            subTitle: 'Recieve this code from your teacher',
+            scope: $scope,
+            buttons: [
+                {
+                    text: 'Cancel'
+                },
+                {
+                    text: '<b>Subscribe!</b>',
+                    type: 'button-positive',
+                    onTap: function (e) {
+                        console.log($scope.iddata.threadSubID);
+                        if (!$scope.iddata.threadSubID) {
+                            console.log("Preventing button press")
+                            e.preventDefault();
+                        } else {
+                            console.log("Subscribe button pressed")
+                            UserFactory.getUser().then(function success(response) {
+                                console.log("User: " + response.data.user);
+                                console.log("ID: " + $scope.iddata.threadSubID);
+                                UserThreadsGetter.joinThread(response.data.user,$scope.iddata.threadSubID);
+                            });
+                        }
+                    }
+                }
+            ]
+        });
     }
 })
 
