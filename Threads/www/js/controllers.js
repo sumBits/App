@@ -114,6 +114,13 @@ angular.module('starter.controllers', [])
     }
 })
 
+.controller('signupCtrl', function ($scope, $state) {
+    $scope.signupPage = function () {
+        $state.go('tab.localThreads');
+        console.log("button worked.");
+    }
+})
+
 .controller('NearbyThreadCtrl', function ($scope, NearbyThreadsGetter, AuthTokenFactory, UserFactory) {
     $scope.votesortime = false;
     $scope.activeButton = 2;

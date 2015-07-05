@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ui.router'])
 
-.run(function ($ionicPlatform) {
+.run(function ($ionicPlatform, UserFactory, AuthTokenFactory, $state) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -18,7 +18,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
         }
-    });
+    })
+
+    if (AuthTokenFactory.getToken()) {
+        UserFactory.getUser().then(function success() {
+            $state.go('tab.localThreads');
+        });
+    } else {
+        $state.go('signup');
+    }
 })
 
 .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -94,10 +102,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                     controller: 'AccountCtrl'
                 }
             }
+        })
+        .state('signup', {
+            url: '/signup',
+            templateUrl: 'templates/signup.html',
+            controller: 'signupCtrl'
         });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/tab/lThreads');
+    $urlRouterProvider.otherwise('/tab/lthreads');
 });
 
 // could put a url routerprovider here if the person is not logged in or in the .run at top -sam
